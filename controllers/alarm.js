@@ -37,12 +37,37 @@ const getUserAlarm = async (req, res) => {
 
 }
 
-const tracker = async (req, res) => {
+const alarmHandler = async () => {
 
     const data = await Axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=try')
     const list = data.data
-    // const getAlarm = await Alarm.find({ active: true, })
-    // res.status(200).send({ data: getAlarm })
+    const query = {
+        active: true, $or: list.map(e => new Object(
+            {
+                $or: [
+                    {
+                        lowerBound: { $gte: e.current_price },
+                        currency: e.symbol
+                    },
+                    {
+                        upperBound: { $lte: e.current_price },
+                        currency: e.symbol
+                    }
+                ]
+
+            }
+        ))
+    };
+    const getAlarm = await Alarm.find(query)
+
+
+    // TODO : send notification
+    if (getAlarm.length > 0)
+        console.log(getAlarm.map(e => e.userId), "Alarmlar Gönderildi")
+
+    // Remove Alarms
+    await Alarm.deleteMany(query)
+
 
 }
 
@@ -51,5 +76,5 @@ const tracker = async (req, res) => {
 module.exports = {
     setAlarm,
     getUserAlarm,
-    tracker
+    alarmHandler
 }

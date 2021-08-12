@@ -12,6 +12,7 @@ app.use(cookieParser());
 connectDB();
 app.use(express.json({ extended: false }));
 app.use(bodyParser.urlencoded({ extended: false }));
+const { alarmHandler } = require("./controllers/alarm")
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
@@ -117,6 +118,12 @@ app.get("/", function (req, res) {
 //   res.sendFile(path.join(__dirname, "build", "index.html"));
 // });
 
+// ALARMLARIN KONTROL EDİLDİĞİ YER
 
+
+var cron = require('node-cron');
+cron.schedule('*/10 * * * * *', () => {
+  alarmHandler();
+});
 
 server.listen(Port, () => console.log("Server started"));

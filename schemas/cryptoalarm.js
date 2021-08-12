@@ -6,8 +6,8 @@ const Schema = mongoose.Schema;
 const adminSchema = new Schema({
     userId: { type: String, required: true, },
     currency: { type: String, required: true },
-    upperBound: { type: String, required: false },
-    lowerBound: { type: String, required: false },
+    upperBound: { type: Number, required: false },
+    lowerBound: { type: Number, required: false },
     active: { type: Boolean, required: true, default: true },
     type: { type: Number, required: true }, // 0 lower 1 upper
 });
