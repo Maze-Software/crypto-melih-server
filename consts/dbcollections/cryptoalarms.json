@@ -1,0 +1,51 @@
+[{
+  "_id": {
+    "$oid": "61151e8739b10956db13e5d2"
+  },
+  "active": true,
+  "userId": "611500569da1bf49c1d56844",
+  "currency": "BTC",
+  "lowerBound": "21.025",
+  "type": 0,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6115211005ffa957a63d7766"
+  },
+  "active": true,
+  "userId": "611500569da1bf49c1d56844",
+  "currency": "BTC",
+  "upperBound": "21.025",
+  "type": 1,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6115213405ffa957a63d7767"
+  },
+  "active": true,
+  "userId": "611500569da1bf49c1d56844",
+  "currency": "BTC2",
+  "lowerBound": "21.025",
+  "type": 0,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61152143fc58cb57b69823d0"
+  },
+  "active": true,
+  "userId": "611500569da1bf49c1d56844",
+  "currency": "BTC2s",
+  "lowerBound": "21.025",
+  "type": 0,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61152186033b9657e1f554b2"
+  },
+  "active": true,
+  "userId": "611500569da1bf49c1d56844",
+  "currency": "ETH",
+  "lowerBound": "21.025",
+  "type": 0,
+  "__v": 0
+}]

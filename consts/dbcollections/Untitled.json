@@ -1,0 +1,17 @@
+[{
+  "_id": {
+    "$oid": "611500569da1bf49c1d56844"
+  },
+  "subscription": false,
+  "subscriptionEndDate": {
+    "$date": "2021-08-12T11:04:53.221Z"
+  },
+  "priceId": null,
+  "promotionEmail": true,
+  "firstName": "Fırat",
+  "lastName": "Doğan",
+  "email": "firatdogan0@gmail.com",
+  "hash": "$2a$12$VFimUv8bAo65y.cmU8HzXumA3aR3nE6YDNIZsHXQXPYKcgVohTqWG",
+  "phone": "05313061213",
+  "__v": 0
+}]

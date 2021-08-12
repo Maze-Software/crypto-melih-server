@@ -1,5 +1,6 @@
 {
-  "DBuri": "mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false",
+  "DBuri": "mongodb+srv://cryptomelih:dmxULAgymEsijAlj@cluster0.eyzam.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+  "DBuri-old": "mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false",
   "privateKey": "secretKey00009",
   "mailAdress": "med.mesbah9189@gmail.com",
   "appstoreReview": false,
