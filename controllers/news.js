@@ -1,5 +1,5 @@
-const News = require('../Schemas/News')
-const { checkMissingParams, checkLogin } = require('./General');
+const News = require('../Schemas/news')
+const { checkMissingParams, checkLogin } = require('./general');
 const errorHandler = require('./ErrorHandler');
 
 const getNews = async (req, res) => {

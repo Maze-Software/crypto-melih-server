@@ -1,7 +1,7 @@
-const User = require('../Schemas/User');
+const User = require('../schemas/user');
 var validator = require('validator');
 const errorHandler = require('./ErrorHandler');
-const { checkMissingParams, checkLogin } = require('./General');
+const { checkMissingParams, checkLogin } = require('./general');
 const bcrypt = require('bcryptjs');
 const config = require('../config.json');
 var jwt = require('jsonwebtoken');

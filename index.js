@@ -37,6 +37,7 @@ global.socketUsers = [];
 
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/news", require("./routes/news"));
+app.use("/api/twitter", require("./routes/twitter"));
 
 // -- ROUTES -- //
 // USER

@@ -1,8 +1,8 @@
 const errorHandler = require('./ErrorHandler');
 var jwt = require('jsonwebtoken');
 const config = require('../config.json');
-const User = require('../Schemas/User');
-const Admins = require('../Schemas/Admins');
+
+const Admins = require('../schemas/Admins');
 const checkMissingParams = (array, req, res) => {
     try {
         array.forEach(key => {
@@ -74,3 +74,4 @@ const isAdmin = async (req) => {
 
 
 module.exports = { checkMissingParams, checkLogin, isAdmin };
+const User = require('../schemas/user');
