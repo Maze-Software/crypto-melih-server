@@ -1,7 +1,7 @@
 const express = require("express");
 // const Port = process.env.Port || 1337
 const Port = 80;
-const connectDB = require("./consts/DbConnection");
+const connectDB = require("./consts/dbconnection");
 const app = express();
 const config = require("./config.json");
 var jwt = require("jsonwebtoken");
