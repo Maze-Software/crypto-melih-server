@@ -1,6 +1,6 @@
 const TwitterFollows = require('../Schemas/twitterfollowings')
 const { checkMissingParams, checkLogin } = require('./general');
-const errorHandler = require('./ErrorHandler');
+const errorHandler = require('./errorHandler');
 
 
 const followUnfollowUser = async (req, res) => {

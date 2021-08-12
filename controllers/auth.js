@@ -1,6 +1,6 @@
 const User = require('../schemas/user');
 var validator = require('validator');
-const errorHandler = require('./ErrorHandler');
+const errorHandler = require('./errorHandler');
 const { checkMissingParams, checkLogin } = require('./general');
 const bcrypt = require('bcryptjs');
 const config = require('../config.json');

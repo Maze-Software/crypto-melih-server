@@ -1,22 +1,14 @@
-const { param } = require("../routes/RegisterUser");
-var validator = require("validator");
-const errorHandler = require("./ErrorHandler");
-const { isAdmin, checkLogin, checkMissingParams } = require("./General");
+
+const errorHandler = require("./errorHandler");
+const { isAdmin, checkLogin, checkMissingParams } = require("./general");
 const bcrypt = require("bcryptjs");
 const config = require("../config.json");
 var jwt = require("jsonwebtoken");
-const { request } = require("express");
-const Category = require("../Schemas/Category");
-const Video = require("../Schemas/Videos");
-const VideoPart = require("../Schemas/VideoParts");
-const Admins = require("../Schemas/Admins");
-const { findById } = require("../Schemas/User");
+const Admins = require("../schemas/Admins");
 const Axios = require("axios");
-const User = require("../Schemas/User");
-const Settings = require("../Schemas/Settings");
-const Prices = require("../Schemas/Prices");
-const { set } = require("mongoose");
-const WatchedInfo = require("../Schemas/WatchedInfo");
+const User = require("../schemas/user");
+const Settings = require("../schemas/settings");
+const Prices = require("../schemas/prices");
 
 const adminLogin = async (req, res) => {
   if ((await checkLogin(req)) == false) {
@@ -43,342 +35,6 @@ const adminLogin = async (req, res) => {
   }
 };
 
-// Category İşlemleri
-
-const addCategory = async (req, res) => {
-  if (isAdmin(req)) {
-    // Admin ise
-    const params = ["categoryName", "categoryNumber"];
-    if (!checkMissingParams(params, req, res)) return;
-    let { categoryName, categoryNumber, lang } = req.body;
-    if (!lang) lang = "en";
-    const addCategory = new Category({
-      categoryName,
-      categoryNumber,
-      lang,
-    });
-    await addCategory.save();
-    res.status(200).send({ message: "category added" });
-  }
-};
-
-const getCategory = async (req, res) => {
-  try {
-    if (isAdmin(req)) {
-      // Admin ise
-      const params = ["categoryId"];
-      if (!checkMissingParams(params, req, res)) return;
-      const { categoryId } = req.body;
-      const category = await Category.findById(categoryId);
-      res.status(200).send({ category });
-    }
-  } catch (e) {
-    new errorHandler(res, 500, 0);
-  }
-};
-
-const getAllCategories = async (req, res) => {
-  try {
-    if (isAdmin(req)) {
-      // Admin ise
-      let { lang } = req.body;
-
-      let category;
-      if (!lang || lang.length < 1) category = await Category.find();
-      else category = await Category.find({ lang });
-      category.sort((a, b) =>
-        a.categoryNumber > b.categoryNumber
-          ? 1
-          : b.categoryNumber > a.categoryNumber
-            ? -1
-            : 0
-      );
-
-      res.status(200).send({ data: category });
-    }
-  } catch (e) {
-    new errorHandler(res, 500, 0);
-  }
-};
-
-const updateCategory = async (req, res) => {
-  try {
-    if (isAdmin(req)) {
-      // Admin ise
-      const params = ["categoryId", "categoryName", "categoryNumber"];
-      if (!checkMissingParams(params, req, res)) return;
-      const { categoryId, categoryName, categoryNumber } = req.body;
-      const category = await Category.findById(categoryId);
-      await category.updateOne({
-        categoryName,
-        categoryNumber,
-      });
-
-      res.status(200).send({ message: "updated" });
-    }
-  } catch (e) {
-    console.log(e);
-    new errorHandler(res, 500, 0);
-  }
-};
-
-const deleteCategory = async (req, res) => {
-  try {
-    if (isAdmin(req)) {
-      // Admin ise
-      const params = ["categoryId"];
-      if (!checkMissingParams(params, req, res)) return;
-      const { categoryId } = req.body;
-      const category = await Category.findById(categoryId);
-      await category.deleteOne();
-      res.status(200).send({ message: "deleted" });
-    }
-  } catch (e) {
-    new errorHandler(res, 500, 0);
-  }
-};
-
-// Category İşlemleri End
-
-// Video İşlemleri
-
-const addVideo = async (req, res) => {
-  if (isAdmin(req)) {
-    // Admin ise
-    const params = ["categoryId", "videoNumber", "videoName", "videoSource"];
-    if (!checkMissingParams(params, req, res)) return;
-    const {
-      categoryId,
-      videoNumber,
-      videoName,
-      videoSource,
-      freeTrial,
-    } = req.body;
-
-    let videoId = videoSource.split("/");
-    videoId = videoId[videoId.length - 1];
-
-    Axios.get("https://player.vimeo.com/video/" + videoId)
-      .then(async (response) => {
-        let startIndex = response.data.search('"duration":');
-        let lastIndex = response.data.search('"thumbs"');
-        lastIndex = lastIndex - startIndex;
-        let duration = response.data.substr(startIndex + 11, lastIndex - 12);
-
-        let startIndex2 = response.data.search('"thumbs":');
-        let lastIndex2 = response.data.search('"owner":');
-        lastIndex2 = lastIndex2 - startIndex2;
-        let thumb = response.data.substr(startIndex2 + 9, lastIndex2 - 10);
-
-        thumb = JSON.parse(thumb);
-
-        const addVideo = new Video({
-          videoName,
-          categoryId,
-          videoNumber,
-          videoSource,
-          duration,
-          thumb,
-          freeTrial,
-        });
-
-        await addVideo.save();
-        res.status(200).send({ message: "video added" });
-      })
-      .catch((error) => {
-        new errorHandler(res, 500, 0);
-      });
-  }
-};
-
-const getVideo = async (req, res) => {
-  try {
-    if (isAdmin(req)) {
-      // Admin ise
-      const params = ["videoId"];
-      if (!checkMissingParams(params, req, res)) return;
-      const { videoId } = req.body;
-      const video = await Video.findById(videoId);
-      res.status(200).send({ video });
-    }
-  } catch (e) {
-    new errorHandler(res, 500, 0);
-  }
-};
-
-const getAllVideos = async (req, res) => {
-  try {
-    if (isAdmin(req)) {
-      // Admin ise
-
-      const params = ["categoryId"];
-      const { categoryId } = req.body;
-
-      const video = await Video.find({ categoryId: categoryId });
-      video.sort((a, b) =>
-        a.videoNumber > b.videoNumber
-          ? 1
-          : b.videoNumber > a.videoNumber
-            ? -1
-            : 0
-      );
-      res.status(200).send({ data: video });
-    }
-  } catch (e) {
-    new errorHandler(res, 500, 0);
-  }
-};
-
-const updateVideo = async (req, res) => {
-  try {
-    if (isAdmin(req)) {
-      // Admin ise
-      const params = [
-        "videoId",
-        "categoryId",
-        "videoName",
-        "videoNumber",
-        "videoSource",
-        "freeTrial",
-      ];
-      // if (!checkMissingParams(params, req, res)) return;
-      const {
-        videoId,
-        categoryId,
-        videoName,
-        videoNumber,
-        videoSource,
-        freeTrial,
-      } = req.body;
-
-      const video = await Video.findById(videoId);
-
-      await video.updateOne({
-        categoryId,
-        videoNumber,
-        videoName,
-        videoSource,
-        freeTrial,
-      });
-      res.status(200).send({ message: "updated" });
-    }
-  } catch (e) {
-    console.log(e);
-    // new errorHandler(res, 500, 0)
-    res.status(500).send({ error: "error" });
-  }
-};
-
-const deleteVideo = async (req, res) => {
-  try {
-    if (isAdmin(req)) {
-      // Admin ise
-      // const params = ["videoId"];
-      // if (!checkMissingParams(params, req, res)) return;
-      const { videoId } = req.body;
-      const video = await Video.findById(videoId);
-      await video.deleteOne();
-
-      await VideoPart.deleteMany({ videoId: videoId }); // video partları da siliyoruz
-
-      await WatchedInfo.deleteMany({ videoId: videoId });
-
-      await Prices.updateMany({}, { $pull: { videos: videoId } })
-
-
-
-
-      res.status(200).send({ message: "deleted" });
-    }
-  } catch (e) {
-    new errorHandler(res, 500, 0);
-  }
-};
-
-// Video İşlemleri End
-
-// Video Part İşlemleri
-
-const addVideoPart = async (req, res) => {
-  if (isAdmin(req)) {
-    // Admin ise
-    const params = ["videoId", "minute", "text"];
-    // if (!checkMissingParams(params, req, res)) return;
-    const { videoId, minute, text } = req.body;
-    const addVideoPart = new VideoPart({
-      videoId,
-      minute,
-      text,
-    });
-    await addVideoPart.save();
-    res.status(200).send({ message: "video part added" });
-  }
-};
-
-const getVideoPart = async (req, res) => {
-  try {
-    if (isAdmin(req)) {
-      // Admin ise
-      const params = ["videoPartId"];
-      if (!checkMissingParams(params, req, res)) return;
-      const { videoPartId } = req.body;
-      const videoPart = await VideoPart.findById(videoPartId);
-      res.status(200).send({ videoPart });
-    }
-  } catch (e) {
-    new errorHandler(res, 500, 0);
-  }
-};
-
-const getAllVideoParts = async (req, res) => {
-  try {
-    if (isAdmin(req)) {
-      // Admin ise
-      // No need any parameters
-      const { videoId } = req.body;
-      const videoPart = await VideoPart.find({ videoId: videoId });
-      res.status(200).send({ data: videoPart });
-    }
-  } catch (e) {
-    new errorHandler(res, 500, 0);
-  }
-};
-
-const updateVideoPart = async (req, res) => {
-  try {
-    if (isAdmin(req)) {
-      // Admin ise
-      const params = ["videoPartId", "videoId", "minute", "text"];
-      // if (!checkMissingParams(params, req, res)) return;
-      const { videoPartId, minute, text } = req.body;
-      const video = await VideoPart.findById(videoPartId);
-      await video.updateOne({
-        minute,
-        text,
-      });
-      res.status(200).send({ message: "updated" });
-    }
-  } catch (e) {
-    console.log(e);
-    new errorHandler(res, 500, 0);
-  }
-};
-
-const deleteVideoPart = async (req, res) => {
-  try {
-    if (isAdmin(req)) {
-      // Admin ise
-      const params = ["videoPartId"];
-      // if (!checkMissingParams(params, req, res)) return;
-      const { videoPartId } = req.body;
-      const videoPart = await VideoPart.findById(videoPartId);
-      await videoPart.deleteOne();
-      res.status(200).send({ message: "deleted" });
-    }
-  } catch (e) {
-    new errorHandler(res, 500, 0);
-  }
-};
 
 const addAdmin = async (req, res) => {
   if (isAdmin(req)) {
@@ -386,6 +42,8 @@ const addAdmin = async (req, res) => {
     const params = ["email", "password", "firstName", "lastName"];
     // if (!checkMissingParams(params, req, res)) return;
     const { email, password, firstName, lastName } = req.body;
+    const check = await Admins.exists({ email })
+    if (check) { return res.status(500).send({ message: "Admin Already Exist" }); }
     const addAdmin = new Admins({
       email,
       hash: bcrypt.hashSync(password, 12),
@@ -393,7 +51,7 @@ const addAdmin = async (req, res) => {
       lastName,
     });
     await addAdmin.save();
-    res.status(200).send({ message: "video part added" });
+    res.status(200).send({ message: "admin added" });
   }
 };
 
@@ -420,13 +78,13 @@ const updateAdmin = async (req, res) => {
     const { adminId, email, firstName, lastName } = req.body;
     console.log({ adminId, email, firstName, lastName });
     const addAdmin = Admins.findById(adminId);
-    console.log();
+
     await addAdmin.updateOne({
       email,
       firstName,
       lastName,
     });
-    res.status(200).send({ message: "video part added" });
+    res.status(200).send({ message: "admin updated" });
   }
 };
 
@@ -649,50 +307,11 @@ const addPrices = async (req, res) => {
 };
 
 
-const panelSelectVideos = async (req, res) => {
-  try {
-    if (isAdmin(req)) {
-      // Admin ise
-      const { lang } = req.body;
-      const categories = await Category.find({ lang: lang }).lean();
-
-      for (let i = 0; i < categories.length; i++) {
-        const category = categories[i];
-        const videos = await Video.find({ categoryId: category._id }).lean();
-        videos.forEach((e) => e.videoSource = ""); // güvenlik gerekçesi ile
-        category.videos = videos;
-      }
 
 
-
-
-      res.status(200).send({ categories: categories });
-    }
-  } catch (e) {
-    new errorHandler(res, 500, 0);
-  }
-
-}
-
-// Video Part İşlemleri End
 module.exports = {
-  panelSelectVideos,
+
   adminLogin,
-  addCategory,
-  getCategory,
-  getAllCategories,
-  updateCategory,
-  deleteCategory,
-  addVideo,
-  getVideo,
-  getAllVideos,
-  updateVideo,
-  deleteVideo,
-  addVideoPart,
-  getVideoPart,
-  getAllVideoParts,
-  updateVideoPart,
-  deleteVideoPart,
   addAdmin,
   getAllAdmins,
   updateAdmin,
