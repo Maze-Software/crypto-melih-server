@@ -36,7 +36,14 @@ const getUserAlarm = async (req, res) => {
     res.status(200).send({ data: getAlarm })
 
 }
+const deleteAlarm = async (req, res) => {
+    const getUser = await checkLogin(req);
+    const { alarmId } = req.body;
+    if (!getUser || !alarmId) { return new errorHandler(res, 401, -1) }
+    const getAlarm = await Alarm.find({ userId: getUser._id, alarmId: alarmId })
+    res.status(200).send({ message: "deleted" })
 
+}
 const alarmHandler = async () => {
 
     const data = await Axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=try')
@@ -60,7 +67,6 @@ const alarmHandler = async () => {
     };
     const getAlarm = await Alarm.find(query)
 
-
     // TODO : send notification
     if (getAlarm.length > 0)
         console.log(getAlarm.map(e => e.userId), "Alarmlar Gönderildi")
@@ -71,10 +77,9 @@ const alarmHandler = async () => {
 
 }
 
-
-
 module.exports = {
     setAlarm,
     getUserAlarm,
-    alarmHandler
+    alarmHandler,
+    deleteAlarm
 }
