@@ -5,7 +5,7 @@ mongoose.set('useCreateIndex', true);
 const Schema = mongoose.Schema;
 const schema = new Schema({
     userId: { type: String, required: true },
-    twitterId: { type: String, required: true },
+    username: { type: String, required: true },
 }, { timestamps: true });
 
 schema.set('toJSON', { virtuals: true });
