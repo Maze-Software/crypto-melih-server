@@ -1,5 +1,6 @@
 const TwitterFollows = require('../Schemas/twitterfollowings')
-const { checkMissingParams, checkLogin } = require('./general');
+const TwitterUser = require('../Schemas/twitterusers')
+const { checkMissingParams, checkLogin, isAdmin } = require('./general');
 const errorHandler = require('./errorHandler');
 
 
@@ -27,7 +28,29 @@ const getFollowingUsers = async (req, res) => {
     res.send({ followings: followings.map(e => e.twitterId) })
 }
 
+const addTwitterUser = async (req, res) => {
+    if (await !isAdmin(req)) { return new errorHandler(res, 401, -1) }
+    const { username } = req.body;
+    // get api from twitter
+    const addTwitterUser = await TwitterUser({
+        twitterId: "",
+        username: "",
+        image: "",
+        info,
+    }).save();
+    res.status(200).send({ message: "added" })
+}
+
+const deleteTwitterUser = async (req, res) => {
+    if (await !isAdmin(req)) { return new errorHandler(res, 401, -1) }
+    const { id } = req.body;
+    await TwitterUser.findByIdAndDelete(id)
+    res.status(200).send({ message: "deleted" })
+}
+
 module.exports = {
     followUnfollowUser,
-    getFollowingUsers
+    getFollowingUsers,
+    addTwitterUser,
+    deleteTwitterUser
 }

@@ -34,7 +34,6 @@ const deleteNews = async (req, res) => {
     res.send({ data: editNews })
 }
 
-
 module.exports = {
     getNews,
     addNews,

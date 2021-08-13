@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const route = express.Router();
 const { adminLogin, addAdmin, getAllAdmins, deleteAdmin, updateAdmin, removeUser, getAllUser, getUserCount } = require('../controllers/admincontroller');
 const { addNews, deleteNews, updateNews } = require('../controllers/news');
+const { addTwitterUser, deleteTwitterUser } = require('../controllers/twitter');
 
 route.post('/login', async (req, res) => {
     await adminLogin(req, res);
@@ -55,5 +56,13 @@ route.post('/deletenews', async (req, res) => {
 route.post('/updatenews', async (req, res) => {
     await updateNews(req, res);
 });
+
+route.post('/addtwitteruser', async (req, res) => {
+    await addTwitterUser(req, res);
+});
+route.post('/deletetwitteruser', async (req, res) => {
+    await deleteTwitterUser(req, res);
+});
+
 
 module.exports = route;
