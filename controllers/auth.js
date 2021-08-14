@@ -1,11 +1,21 @@
 const User = require('../schemas/user');
 var validator = require('validator');
 const errorHandler = require('./errorHandler');
-const { checkMissingParams, checkLogin } = require('./general');
+const { checkMissingParams, checkLogin, activeUserSubscription } = require('./general');
 const bcrypt = require('bcryptjs');
 const config = require('../config.json');
 var jwt = require('jsonwebtoken');
 
+function generateReferralCode(length) {
+    var result = '';
+    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    var charactersLength = characters.length;
+    for (var i = 0; i < length; i++) {
+        result += characters.charAt(Math.floor(Math.random() *
+            charactersLength));
+    }
+    return result;
+}
 
 function firstNameValidator(firstName, res) {
     const length = validator.isByteLength(firstName, { min: 2, max: 20 }) // length should be between 4 and 10
@@ -62,6 +72,7 @@ const registerUser = async (req, res) => {
 
     if (!req.cookies.token) {
         const params = [
+            'username',
             'firstName',
             'lastName',
             'email',
@@ -71,7 +82,13 @@ const registerUser = async (req, res) => {
 
         if (!checkMissingParams(params, req, res)) return;
 
-        let { firstName, lastName, email, password, phone, promotionEmail = false } = req.body;
+        let { username, firstName, lastName, email, password, phone, promotionEmail = false, referralCode = false } = req.body;
+
+
+
+        const check = await User.exists({ $or: [{ username }, { email }] })
+        if (check) { return res.status(500).send({ message: "username or email already exist" }) }
+
         firstName = CapitalizeString(firstName);
         lastName = CapitalizeString(lastName);
         email = email.toLowerCase();
@@ -82,20 +99,35 @@ const registerUser = async (req, res) => {
             await emailValidator(email, res)
         ) {
 
-            const newUser = new User({
+            let referralCodeGenerated = generateReferralCode(7);
+            while (await User.exists({ referralCode: referralCodeGenerated })) {
+                referralCodeGenerated = generateReferralCode(7);
+            }
+
+            const newUser = await new User({
+                username,
                 firstName,
                 lastName,
                 email,
                 hash: bcrypt.hashSync(password, 12),
                 promotionEmail,
                 phone,
-            });
+                referralCode: referralCodeGenerated
+            }); save(); // Insert to database
 
 
-
-            await newUser.save(); // Insert to database
             const token = createJWT(email, newUser._id) // Create token
             res.cookie('token', token); // set token to the cookie
+
+            if (referralCode) {
+                const whooseCode = await User.findOne({ referralCode });
+                if (whooseCode) {
+                    await activeUserSubscription(1, whooseCode._id)
+                    await activeUserSubscription(1, newUser._id)
+                }
+            }
+
+
             res.status(200).send({ message: "User registered successfully", token: token, user: newUser }) // send response;
 
 

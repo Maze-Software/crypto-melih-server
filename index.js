@@ -43,6 +43,7 @@ app.use("/api/alarm", require("./routes/alarm"));
 app.use("/api/admin", require("./routes/admin"));
 app.use("/api/tradingview", require("./routes/tradingview"));
 app.use("/api/crypto", require("./routes/crypto"));
+app.use("/api/test", require("./routes/test"));
 
 // -- ROUTES -- //
 // USER

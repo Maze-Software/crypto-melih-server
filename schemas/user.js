@@ -14,6 +14,7 @@ const userSchema = new Schema({
     subscriptionEndDate: { type: Date, required: false, default: new Date },
     priceId: { type: String, required: false, default: null },
     promotionEmail: { type: Boolean, required: false, default: true },
+    referralCode: { type: String, required: false, default: "none" }
 }, { timestamps: true });
 
 

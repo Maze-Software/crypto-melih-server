@@ -18,7 +18,6 @@ const checkMissingParams = (array, req, res) => {
         // console.log(e)
     }
 }
-
 const checkLogin = async (req) => {
 
     try {
@@ -44,8 +43,6 @@ const checkLogin = async (req) => {
     }
 
 }
-
-
 const isAdmin = async (req) => {
 
     try {
@@ -79,5 +76,18 @@ const isUserSubscribed = async (userObj) => {
     return constraint;
 }
 
-module.exports = { checkMissingParams, checkLogin, isAdmin, isUserSubscribed };
+const activeUserSubscription = async (month, userId) => {
+    const user = await User.findById(userId)
+    if (user) {
+        const newDate = new Date();
+        const subscriptionEndDate = newDate.setMonth(newDate.getMonth())
+        await User.findByIdAndUpdate(user._id, { subscription: true, subscriptionEndDate: subscriptionEndDate })
+        return true
+    }
+    else {
+        return false;
+    }
+}
+
+module.exports = { checkMissingParams, checkLogin, isAdmin, isUserSubscribed, activeUserSubscription };
 const User = require('../schemas/user');
