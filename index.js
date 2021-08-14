@@ -35,7 +35,7 @@ app.use((req, res, next) => {
 global.SOCKET_STATE = null; // diğer dosyalardan socket'e ulaşmak için
 global.socketUsers = [];
 
-
+app.use(express.static('./'))
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/news", require("./routes/news"));
 app.use("/api/twitter", require("./routes/twitter"));
@@ -44,6 +44,8 @@ app.use("/api/admin", require("./routes/admin"));
 app.use("/api/tradingview", require("./routes/tradingview"));
 app.use("/api/crypto", require("./routes/crypto"));
 app.use("/api/test", require("./routes/test"));
+app.use("/api/upload", require("./routes/upload"));
+
 
 // -- ROUTES -- //
 // USER

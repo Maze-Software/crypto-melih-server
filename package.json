@@ -25,6 +25,7 @@
     "cookie-parser": "^1.4.5",
     "crypto": "^1.0.1",
     "express": "^4.17.1",
+    "express-fileupload": "^1.2.1",
     "iyzipay": "^2.0.48",
     "js-crypto-hmac": "^1.0.2",
     "jsonwebtoken": "^8.5.1",
