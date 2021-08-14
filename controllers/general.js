@@ -72,6 +72,12 @@ const isAdmin = async (req) => {
 
 }
 
+const isUserSubscribed = async (userObj) => {
+    let subscriptionEndDate = new Date(userObj.subscriptionEndDate).getTime();
+    let nowDate = new Date().getTime();
+    let constraint = userObj.subscription && nowDate < subscriptionEndDate;
+    return constraint;
+}
 
-module.exports = { checkMissingParams, checkLogin, isAdmin };
+module.exports = { checkMissingParams, checkLogin, isAdmin, isUserSubscribed };
 const User = require('../schemas/user');

@@ -41,6 +41,8 @@ app.use("/api/news", require("./routes/news"));
 app.use("/api/twitter", require("./routes/twitter"));
 app.use("/api/alarm", require("./routes/alarm"));
 app.use("/api/admin", require("./routes/admin"));
+app.use("/api/tradingview", require("./routes/tradingview"));
+app.use("/api/crypto", require("./routes/crypto"));
 
 // -- ROUTES -- //
 // USER

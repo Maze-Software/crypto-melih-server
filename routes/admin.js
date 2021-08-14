@@ -5,6 +5,7 @@ const route = express.Router();
 const { adminLogin, addAdmin, getAllAdmins, deleteAdmin, updateAdmin, removeUser, getAllUser, getUserCount } = require('../controllers/admincontroller');
 const { addNews, deleteNews, updateNews } = require('../controllers/news');
 const { addTwitterUser, deleteTwitterUser } = require('../controllers/twitter');
+const { addTradingView, deleteTradingView } = require('../controllers/tradingview');
 
 route.post('/login', async (req, res) => {
     await adminLogin(req, res);
@@ -29,39 +30,44 @@ route.post('/updateadmin', async (req, res) => {
 
 
 // Admin Controls
-
-
 route.post('/deleteuser', async (req, res) => {
     await removeUser(req, res);
 });
-
-
 route.get('/getusers', async (req, res) => {
     await getAllUser(req, res);
 });
 route.get('/usercount', async (req, res) => {
     await getUserCount(req, res);
 });
-
-
 route.post('/addnews', async (req, res) => {
     await addNews(req, res);
 });
-
-
 route.post('/deletenews', async (req, res) => {
     await deleteNews(req, res);
 });
-
 route.post('/updatenews', async (req, res) => {
     await updateNews(req, res);
 });
+
+
+// Twitter Users
 
 route.post('/addtwitteruser', async (req, res) => {
     await addTwitterUser(req, res);
 });
 route.post('/deletetwitteruser', async (req, res) => {
     await deleteTwitterUser(req, res);
+});
+
+route.post('/addtradingview', async (req, res) => {
+    await addTradingView(req, res);
+});
+
+route.post('/deletetradingview', async (req, res) => {
+    await deleteTradingView(req, res);
+});
+route.post('/updatetradingview', async (req, res) => {
+    await updateTradingView(req, res);
 });
 
 
