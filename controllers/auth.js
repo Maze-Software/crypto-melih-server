@@ -113,7 +113,7 @@ const registerUser = async (req, res) => {
                 promotionEmail,
                 phone,
                 referralCode: referralCodeGenerated
-            }); save(); // Insert to database
+            }).save(); // Insert to database
 
 
             const token = createJWT(email, newUser._id) // Create token
