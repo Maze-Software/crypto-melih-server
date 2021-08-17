@@ -15,7 +15,7 @@ const getTradingView = async (req, res) => {
   if (!getUser) { return new errorHandler(res, 401, -1) };
   if (!isUserSubscribed(getUser)) { return new errorHandler(res, 401, 0) }
   const { width = 300, height = 300 } = req.body;
-  const getTradingViews = TradingViews.find().sort({ created_at: -1 }).lean();
+  const getTradingViews = await TradingViews.find().sort({ created_at: -1 }).lean();
   getTradingViews.forEach((tradingView, index) => {
     getTradingViews[index].source =
       `
