@@ -5,7 +5,7 @@ const route = express.Router();
 const { adminLogin, addAdmin, getAllAdmins, deleteAdmin, updateAdmin, removeUser, getAllUser, getUserCount } = require('../controllers/admincontroller');
 const { addNews, deleteNews, updateNews } = require('../controllers/news');
 const { addTwitterUser, deleteTwitterUser, getTwitterUser } = require('../controllers/twitter');
-const { addTradingView, deleteTradingView } = require('../controllers/tradingview');
+const { addTradingView, deleteTradingView, updateTradingView } = require('../controllers/tradingview');
 
 route.post('/login', async (req, res) => {
     await adminLogin(req, res);
