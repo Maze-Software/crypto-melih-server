@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const route = express.Router();
 const { adminLogin, addAdmin, getAllAdmins, deleteAdmin, updateAdmin, removeUser, getAllUser, getUserCount } = require('../controllers/admincontroller');
 const { addNews, deleteNews, updateNews } = require('../controllers/news');
-const { addTwitterUser, deleteTwitterUser } = require('../controllers/twitter');
+const { addTwitterUser, deleteTwitterUser, getTwitterUser } = require('../controllers/twitter');
 const { addTradingView, deleteTradingView } = require('../controllers/tradingview');
 
 route.post('/login', async (req, res) => {
@@ -58,6 +58,12 @@ route.post('/addtwitteruser', async (req, res) => {
 route.post('/deletetwitteruser', async (req, res) => {
     await deleteTwitterUser(req, res);
 });
+route.get('/gettwitterusers', async (req, res) => {
+    await getTwitterUser(req, res);
+});
+
+
+
 
 route.post('/addtradingview', async (req, res) => {
     await addTradingView(req, res);

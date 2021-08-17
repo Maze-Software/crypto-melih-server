@@ -42,6 +42,11 @@ const getTweetOfUser = async (id) => {
     return data.data;
 }
 
+const getTwitterUser = async (req, res) => {
+    if (await !isAdmin(req)) { return new errorHandler(res, 401, -1) }
+
+    res.status(200).send({ data: await TwitterUser.find() })
+}
 
 const addTwitterUser = async (req, res) => {
     if (await !isAdmin(req)) { return new errorHandler(res, 401, -1) }
@@ -81,5 +86,6 @@ module.exports = {
     getFollowingUsers,
     addTwitterUser,
     deleteTwitterUser,
-    getTwitterFeed
+    getTwitterFeed,
+    getTwitterUser
 }
