@@ -82,7 +82,7 @@ const registerUser = async (req, res) => {
 
         if (!checkMissingParams(params, req, res)) return;
 
-        let { username, firstName, lastName, email, password, phone, promotionEmail = false, referralCode = false } = req.body;
+        let { username, firstName, lastName, email, password, phone, promotionEmail = false, referralCode = false, profilePicture = "" } = req.body;
 
 
 
@@ -111,6 +111,7 @@ const registerUser = async (req, res) => {
                 email,
                 hash: bcrypt.hashSync(password, 12),
                 promotionEmail,
+                profilePicture: profilePicture ? profilePicture : "",
                 phone,
                 referralCode: referralCodeGenerated
             }).save(); // Insert to database

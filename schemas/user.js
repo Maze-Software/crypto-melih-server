@@ -10,11 +10,12 @@ const userSchema = new Schema({
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
     phone: { type: String, required: false },
-    subscription: { type: Boolean, required: false, default: false },
+    subscription: { type: Boolean, reßquired: false, default: false },
     subscriptionEndDate: { type: Date, required: false, default: new Date },
     priceId: { type: String, required: false, default: null },
     promotionEmail: { type: Boolean, required: false, default: true },
-    referralCode: { type: String, required: false, default: "none" }
+    referralCode: { type: String, required: false, default: "none" },
+    profilePicture: { type: String, required: false, default: "" },
 }, { timestamps: true });
 
 
