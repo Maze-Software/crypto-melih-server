@@ -40,7 +40,7 @@ const deleteAlarm = async (req, res) => {
     const getUser = await checkLogin(req);
     const { alarmId } = req.body;
     if (!getUser || !alarmId) { return new errorHandler(res, 401, -1) }
-    const getAlarm = await Alarm.find({ userId: getUser._id, alarmId: alarmId })
+    const getAlarm = await Alarm.findByIdAndDelete(alarmId)
     res.status(200).send({ message: "deleted" })
 
 }
