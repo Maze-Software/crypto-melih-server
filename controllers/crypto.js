@@ -22,7 +22,12 @@ const likeunlikecryptos = async (req, res) => {
         res.status(200).send({ status: "liked" })
     }
 }
-
+const getLikedCryptos = async (req, res) => {
+    const getUser = await checkLogin(req);
+    if (!getUser) { return new errorHandler(res, 401, -1) }
+    res.send({ data: await CeyptoLikes.find({ userId: getUser._id }) })
+}
 module.exports = {
     likeunlikecryptos,
+    getLikedCryptos
 }
