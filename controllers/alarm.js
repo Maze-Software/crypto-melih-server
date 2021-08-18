@@ -16,7 +16,7 @@ const setAlarm = async (req, res) => {
         type
     })
     if (checkExist) {
-        return res.status(500).send({ message: "Alarm already exists" })
+        return res.status(500).send({ message: "Alarm zaten kurulmuş" })
     }
     const createAlarm = await new Alarm({
         active: true,
