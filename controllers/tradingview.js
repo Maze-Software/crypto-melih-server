@@ -10,57 +10,68 @@ const User = require("../schemas/user");
 const TradingViews = require("../schemas/tradingview");
 const Prices = require("../schemas/prices");
 
-const getTradingView = async (req, res) => {
+const getStatus = async (req, res) => {
   const getUser = await checkLogin(req)
-  if (!getUser) { return new errorHandler(res, 401, -1) };
-  if (!isUserSubscribed(getUser)) { return new errorHandler(res, 401, 0) }
-  const { width = 300, height = 300 } = req.body;
-  const getTradingViews = await TradingViews.find().sort({ created_at: -1 }).lean();
-  getTradingViews.forEach((tradingView, index) => {
-    getTradingViews[index].source =
-      `
-    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-    <script type="text/javascript">
-    var tradingview_embed_options = {};
-    tradingview_embed_options.width = '${width}';
-    tradingview_embed_options.height = '${height}';
-    tradingview_embed_options.chart = '${tradingView.tradingViewId}';
-    new TradingView.chart(tradingview_embed_options);
-    </script>
-    `;
-  })
-  res.send({ data: getTradingViews })
+  if (await !getUser) { return new errorHandler(res, 401, -1) }
+  if (await !isUserSubscribed(getUser)) { return new errorHandler(res, 401, -1) }
+
+  const findRecord = await TradingViews.find({ userId: getUser._id })
+
+  if (!findRecord) {
+    return res.send({ status: 0 })
+  }
+  else {
+    if (!findRecord) {
+      return res.send({ status: findRecord.status })
+    }
+  }
 }
-const addTradingView = async (req, res) => {
-  if (await !isAdmin(req)) { return new errorHandler(res, 401, -1) }
-  const { title, tradingViewId, description } = req.body;
-  if (!title || !tradingViewId || !description) { return new errorHandler(res, 500, 1) }
-  const newTradingView = await new TradingViews({ title, tradingViewId, description }).save();
-  res.send("eklendi")
-};
-const deleteTradingView = async (req, res) => {
-  if (await !isAdmin(req)) { return new errorHandler(res, 401, -1) }
-  const { id } = req.body;
-  const deleteTradingView = await TradingViews.findByIdAndDelete(id);
-  res.send("ok")
-};
+const apply = async (req, res) => {
+  const getUser = await checkLogin(req)
+  if (await !getUser) { return new errorHandler(res, 401, -1) }
+  if (await !isUserSubscribed(getUser)) { return new errorHandler(res, 401, -1) }
 
-const updateTradingView = async (req, res) => {
-  if (await !isAdmin(req)) { return new errorHandler(res, 401, -1) }
-  const { id, title, tradingViewId, description } = req.body;
-  if (!id) { return new errorHandler(res, 500, 1) }
-  const updateObj = {};
-  if (title) updateObj.title = title;
-  if (tradingViewId) updateObj.tradingViewId = tradingViewId;
-  if (description) updateObj.description = description;
+  const { tradingViewName } = req.body;
 
-  const findAndUpdate = await TradingViews.findByIdAndUpdate(id, updateObj);
-  res.send("trading view is updated")
-};
+  if (tradingViewName) {
+    await new TradingViews({ userId: getUser._id, tradingViewName: tradingViewName, status: 1 }).save();
+    return res.send("ok")
+  }
+  return new errorHandler(res, 500, 0)
+
+}
+
+const approve = async (req, res) => {
+  if (await !isAdmin(req)) { return new errorHandler(res, 401, -1) }
+  const { _id } = req.body;
+  if (_id) {
+    await TradingViews.findByIdAndUpdate(_id, { status: 2 });
+    return res.send("ok")
+  }
+  return new errorHandler(res, 500, 0)
+}
+
+
+const remove = async (req, res) => {
+  if (await !isAdmin(req)) { return new errorHandler(res, 401, -1) }
+  const { _id } = req.body;
+  if (_id) {
+    await TradingViews.findByIdAndUpdate(_id, { status: 3 });
+    return res.send("ok")
+  }
+  return new errorHandler(res, 500, 0)
+}
+const getApplications = async (req, res) => {
+  if (await !isAdmin(req)) { return new errorHandler(res, 401, -1) }
+  const applications = await TradingViews.find({ status: { $ne: 3 } });
+  return res.send({ data: applications })
+}
 
 module.exports = {
-  getTradingView,
-  addTradingView,
-  deleteTradingView,
-  updateTradingView
+  apply,
+  getStatus,
+  approve,
+  remove,
+  getApplications
+
 }

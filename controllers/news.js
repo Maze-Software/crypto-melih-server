@@ -1,4 +1,4 @@
-const News = require('../Schemas/news')
+const News = require('../schemas/news')
 const { checkMissingParams, checkLogin, isAdmin } = require('./general');
 const errorHandler = require('./errorHandler');
 

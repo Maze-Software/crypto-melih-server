@@ -1,24 +1,24 @@
 ﻿// const { param, use } = require('../routes/RegisterUser');
-const User = require('../Schemas/User');
-const Admins = require('../Schemas/Admins');
+const User = require('../schemas/user');
+const Admins = require('../schemas/Admins');
 var validator = require('validator');
 const errorHandler = require('./ErrorHandler');
-const { checkMissingParams, checkLogin } = require('./General');
+const { checkMissingParams, checkLogin, isUserSubscribed } = require('./General');
 const bcrypt = require('bcryptjs');
 const config = require('../config.json');
 var jwt = require('jsonwebtoken');
 const { request } = require('express');
-const Category = require("../Schemas/Category");
-const Video = require('../Schemas/Videos');
-const VideoPart = require('../Schemas/VideoParts');
-const WatchedInfo = require('../Schemas/WatchedInfo');
+const Category = require("../schemas/Category");
+const Video = require('../schemas/Videos');
+const VideoPart = require('../schemas/VideoParts');
+const WatchedInfo = require('../schemas/WatchedInfo');
 var nodemailer = require('nodemailer');
 const ErrorHandler = require('./ErrorHandler');
-const { schema, count } = require('../Schemas/User');
-const Payments = require('../Schemas/Payments');
+const { schema, count } = require('../schemas/user');
+const Payments = require('../schemas/Payments');
 var Iyzipay = require('iyzipay');
-const Prices = require('../Schemas/Prices');
-const ScreenShot = require('../Schemas/ScreenShots');
+const Prices = require('../schemas/Prices');
+const ScreenShot = require('../schemas/ScreenShots');
 var iyzipay = new Iyzipay(config.iyziCo);
 
 
@@ -224,207 +224,6 @@ const login = async (req, res) => {
 };
 
 
-const getVideo = async (req, res) => {
-    try {
-
-        const params = ['videoId'];
-        if (!checkMissingParams(params, req, res)) return;
-        const { videoId } = req.body;
-        const video = await Video.findById(videoId)
-        res.status(200).send({ video })
-
-    }
-    catch (e) {
-        new errorHandler(res, 500, 0)
-    }
-}
-
-const getAllVideos = async (req, res) => {
-    try {
-        if (await checkLogin(req)) {
-            const params = ['categoryId'];
-            const { categoryId } = req.body;
-            let video = await Video.find({ categoryId: categoryId })
-            video.sort((a, b) => (a.videoNumber > b.videoNumber) ? 1 : ((b.videoNumber > a.videoNumber) ? -1 : 0));
-
-            const getuser = await checkLogin(req);
-            let subscriptionEndDate = new Date(getuser.subscriptionEndDate).getTime();
-            let nowDate = new Date().getTime();
-            let constraint = getuser.subscription && nowDate < subscriptionEndDate;
-
-            // TODO: Videoları Açarken paketin içerisinde olup olmadığına da bak
-            if (!constraint) {
-                video.map((item) => {
-                    item.videoSource = !constraint && !item.freeTrial ? false : item.videoSource;
-
-                    // item.thumb = constraint ? item.thumb : false;
-                })
-            }
-            res.status(200).send({ data: video })
-        }
-        else {
-            new errorHandler(res, 500, 0)
-        }
-    }
-    catch (e) {
-        new errorHandler(res, 500, 0)
-    }
-}
-
-
-const getCategory = async (req, res) => {
-    try {
-        if (await checkLogin(req)) { // Admin ise
-            const params = ['categoryId'];
-            if (!checkMissingParams(params, req, res)) return;
-            const { categoryId } = req.body;
-            const category = await Category.findById(categoryId)
-            res.status(200).send({ category })
-        }
-    }
-    catch (e) {
-        new errorHandler(res, 500, 0)
-    }
-}
-
-const getAllCategories = async (req, res) => {
-    try {
-        if (await checkLogin(req)) { // Admin ise
-            // No need any parameters
-            let { lang } = req.body;
-
-            if (!lang) lang = "en";
-            const category = await Category.find()
-
-            category.sort((a, b) => (a.categoryNumber > b.categoryNumber) ? 1 : ((b.categoryNumber > a.categoryNumber) ? -1 : 0));
-
-            res.status(200).send({ data: category })
-        }
-    }
-    catch (e) {
-        new errorHandler(res, 500, 0)
-    }
-}
-
-const getListCombo = async (req, res) => {
-    // try {
-
-    const token = req.cookies.token;
-    if (token) {
-        var userResult = jwt.verify(token, config.privateKey);
-        const user = await User.findOne({ email: userResult.email })
-
-        if (user) {
-            const lang = user.lang.toLocaleLowerCase();
-            let userSubscripton = false;
-            let userAccessVideos = [];
-
-            let subscriptionEndDate = new Date(user.subscriptionEndDate).getTime();
-            let nowDate = new Date().getTime();
-
-            if (nowDate < subscriptionEndDate) {
-                userSubscripton = true;
-                const price = await getUserPrice(user.priceId)
-                if (price) { userAccessVideos = price.videos }
-            }
-
-
-
-
-            var comboList = [];
-
-
-
-            const category = await Category.find({ lang }).lean();
-
-            for (var categoryIndex = 0; categoryIndex < category.length; categoryIndex++) {
-
-                const currentCategory = category[categoryIndex];
-
-                const videos = await Video.find({ categoryId: currentCategory._id }).lean();
-
-                for (var videoIndex = 0; videoIndex < videos.length; videoIndex++) {
-                    const currentVideo = videos[videoIndex];
-
-                    currentVideo.lock = true;
-
-
-                    if (currentVideo.freeTrial) {
-                        currentVideo.lock = false;
-                    }
-                    else if (userAccessVideos.includes(currentVideo._id)) {
-                        currentVideo.lock = false;
-                    }
-
-                    if (currentVideo.lock == true) // güvenlik
-                    {
-                        currentVideo.videoSource = "";
-                    }
-
-                    const videoPart = await VideoPart.find({ videoId: currentVideo._id }).lean();
-                    currentVideo.videoparts = videoPart;
-                }
-
-                if (videos) {
-                    currentCategory.videos = videos;
-                }
-                else {
-                    currentCategory.videos = [];
-                }
-
-                comboList = category;
-
-
-            }
-
-
-            category.sort((a, b) => (a.categoryNumber > b.categoryNumber) ? 1 : ((b.categoryNumber > a.categoryNumber) ? -1 : 0));
-
-
-
-
-
-            res.status(200).send({ data: comboList })
-
-        }
-    }
-    // }
-    // catch (e) {
-    //     new errorHandler(res, 500, 0)
-    // }
-
-}
-
-
-const getVideoPart = async (req, res) => {
-    try {
-        if (await checkLogin(req)) { // Admin ise
-            const params = ['videoPartId'];
-            if (!checkMissingParams(params, req, res)) return;
-            const { videoPartId } = req.body;
-            const videoPart = await VideoPart.findById(videoPartId)
-            res.status(200).send({ videoPart })
-        }
-    }
-    catch (e) {
-        new errorHandler(res, 500, 0)
-    }
-}
-
-const getAllVideoParts = async (req, res) => {
-    try {
-        if (await checkLogin(req)) { // Admin ise
-            // No need any parameters
-            const { videoId } = req.body;
-            const videoPart = await VideoPart.find({ videoId: videoId })
-            res.status(200).send({ data: videoPart })
-        }
-    }
-    catch (e) {
-        new errorHandler(res, 500, 0)
-    }
-}
-
 const changeUserProfile = async (req, res) => {
     try {
         if (await checkLogin(req)) { // Admin ise
@@ -433,7 +232,6 @@ const changeUserProfile = async (req, res) => {
             const token = req.cookies.token;
             var userResult = jwt.verify(token, config.privateKey);
             const user = await User.findOne({ email: userResult.email })
-            if (user._id == "609243189055c4209480afc6" || email == "test@test.com") return res.status(500).send("No account")
             if (user) {
 
                 let newToken = token;
@@ -519,39 +317,15 @@ const getUserPrice = async (priceId) => {
 
 }
 
-const isUserSubscribed = async (req, res) => {
+const _isUserSubscribed = async (req, res) => {
 
-    const token = req.cookies.token;
-    if (token) {
-        var userResult = jwt.verify(token, config.privateKey);
-        var user = await User.findOne({ email: userResult.email })
-        if (user) {
-
-            const _controlPrevPayment = await controlPrevPayment(user);
-            if (_controlPrevPayment) {
-                user = await User.findOne({ email: userResult.email })
-            }
-
-            let subscriptionEndDate = new Date(user.subscriptionEndDate).getTime();
-            let nowDate = new Date().getTime();
-            // if (user.subscription && nowDate < subscriptionEndDate) 
-
-            if (nowDate < subscriptionEndDate) {
-
-                const priceInformationGet = await getUserPrice(user.priceId);
-                res.status(200).send({ subscribe: true, subscriptionEndDate: subscriptionEndDate, priceInformation: priceInformationGet });
-            }
-            else {
-                res.status(500).send({ subscribe: false });
-            }
-
-        }
-        else {
-            res.status(500).send({ subscribe: false });
-        }
+    const getUser = await checkLogin(req);
+    if (!getUser) {
+        return res.send({ status: false })
     }
     else {
-        res.status(500).send({ subscribe: false });
+        const status = isUserSubscribed(getUser)
+        return res.send({ status: status })
     }
 
 
@@ -659,64 +433,7 @@ function generateRandomPassword(length) {
     return result;
 }
 
-const watchedInfo = async (req, res) => {
-    try {
-        if (await checkLogin(req)) {
-            const user = await checkLogin(req)
 
-            const { videoId, timeOfWatched, isComplated } = req.body;
-            const schema = {
-                userId: user._id,
-                videoId,
-                timeOfWatched,
-
-            };
-            if (isComplated) { schema.isComplated = isComplated }
-
-
-            const updateIfAldready = await WatchedInfo.findOne({ userId: user._id, videoId: videoId });
-
-            if (updateIfAldready) {
-                await WatchedInfo.updateOne({ userId: user._id, videoId: videoId }, schema);
-                res.status(200).send({ message: "ok" })
-            }
-            else {
-                const newWatchInfo = new WatchedInfo(schema);
-                await newWatchInfo.save();
-                res.status(200).send({ message: "ok" })
-            }
-
-
-        }
-        else {
-            new errorHandler(res, 500, 0);
-        }
-    }
-    catch (e) {
-        new errorHandler(res, 500, 1);
-        console.log(e)
-    }
-}
-
-const getWatchedInfo = async (req, res) => {
-    try {
-        if (await checkLogin(req)) {
-            const user = await checkLogin(req)
-
-            const infoList = await WatchedInfo.find({ userId: user._id });
-
-            res.send({ data: infoList })
-
-        }
-        else {
-            new errorHandler(res, 500, 0);
-        }
-    }
-    catch (e) {
-        new errorHandler(res, 500, 1);
-        console.log(e)
-    }
-}
 const controlPrevPayment = async (user, res = null) => {
 
     const filterDate = new Date();
@@ -1342,4 +1059,4 @@ const termsAndCondition = (req, res) => {
     res.send("yok")
 }
 
-module.exports = { termsAndCondition, getScreenShotRemains, takeScreenShot, registerUser, logOut, login, getVideo, getAllVideos, getCategory, getAllCategories, getAllVideoParts, getVideoPart, refreshToken, changeUserProfile, isUserSubscribed, changePassword, sendMail, forgetPassword, watchedInfo, getWatchedInfo, paymentForm, paymentCallBack, getListCombo, getSuggestedVideos };
+module.exports = { termsAndCondition, getScreenShotRemains, takeScreenShot, registerUser, logOut, login, refreshToken, changeUserProfile, _isUserSubscribed, changePassword, sendMail, forgetPassword, watchedInfo, getWatchedInfo, paymentForm, paymentCallBack, getListCombo, getSuggestedVideos };

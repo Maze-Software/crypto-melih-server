@@ -5,6 +5,8 @@ const { checkMissingParams, checkLogin, activeUserSubscription } = require('./ge
 const bcrypt = require('bcryptjs');
 const config = require('../config.json');
 var jwt = require('jsonwebtoken');
+const TwitterUser = require('../schemas/twitterusers')
+const TwitterFollows = require('../schemas/twitterfollowings')
 
 function generateReferralCode(length) {
     var result = '';
@@ -128,6 +130,10 @@ const registerUser = async (req, res) => {
                 }
             }
 
+            const getTwitterUsers = TwitterUser.find({})
+            for await (const twitterUser of getTwitterUsers.map(e => e)) {
+                await new TwitterFollows({ username: twitterUser.username, userId: newUser._id }).save();
+            }
 
             res.status(200).send({ message: "User registered successfully", token: token, user: newUser }) // send response;
 

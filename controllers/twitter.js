@@ -1,5 +1,7 @@
-const TwitterFollows = require('../Schemas/twitterfollowings')
-const TwitterUser = require('../Schemas/twitterusers')
+
+const TwitterFollows = require('../schemas/twitterfollowings')
+const TwitterUser = require('../schemas/twitterusers')
+const User = require('../schemas/user')
 const { checkMissingParams, checkLogin, isAdmin } = require('./general');
 const errorHandler = require('./errorHandler');
 const Axios = require('axios').default;
@@ -54,6 +56,14 @@ const addTwitterUser = async (req, res) => {
     const addTwitterUser = await TwitterUser({
         username: username,
     }).save();
+
+    const getUsers = User.find({});
+
+    for await (const user of getUsers.map(e => e)) {
+        await new TwitterFollows({ username: username, userId: user._id }).save();
+    }
+
+
     res.status(200).send({ message: "added", data: addTwitterUser })
 }
 
@@ -61,6 +71,12 @@ const deleteTwitterUser = async (req, res) => {
     if (await !isAdmin(req)) { return new errorHandler(res, 401, -1) }
     const { id } = req.body;
     await TwitterUser.findByIdAndDelete(id)
+    const getUsers = User.find({});
+
+    for await (const user of getUsers.map(e => e)) {
+        await TwitterFollows.deleteMany({ username: username, userId: user._id })
+    }
+
     res.status(200).send({ message: "deleted" })
 }
 const getTwitterFeed = async (req, res) => {
