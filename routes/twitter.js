@@ -14,7 +14,7 @@ route.get('/feed', async (req, res) => {
     await getTwitterFeed(req, res);
 });
 
-route.get('/search', async (req, res) => {
+route.post('/search', async (req, res) => {
     await searchUser(req, res);
 });
 

@@ -100,9 +100,17 @@ const getTwitterFeed = async (req, res) => {
 const searchUser = async (req, res) => {
     const getUser = await checkLogin(req);
     if (!getUser) { return new errorHandler(res, 401, -1) }
-    const data = await getTwitterProfile(req.body.username)
+    try {
+        const data = await getTwitterProfile(req.body.username)
+        res.send({ data: data })
+    }
+    catch (e) {
+        res.status(404).send("fail")
 
-    res.send({ data: data })
+    }
+
+
+
 }
 
 module.exports = {
