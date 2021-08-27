@@ -45,6 +45,7 @@ app.use("/api/tradingview", require("./routes/tradingview"));
 app.use("/api/crypto", require("./routes/crypto"));
 app.use("/api/test", require("./routes/test"));
 app.use("/api/upload", require("./routes/upload"));
+app.use("/api/investing", require("./routes/investing"));
 
 
 // -- ROUTES -- //
