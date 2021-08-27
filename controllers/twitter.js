@@ -97,11 +97,20 @@ const getTwitterFeed = async (req, res) => {
     res.send({ tweetList: tweetList, user: users })
 }
 
+const searchUser = async (req, res) => {
+    const getUser = await checkLogin(req);
+    if (!getUser) { return new errorHandler(res, 401, -1) }
+    const data = await getTwitterProfile(req.body.username)
+
+    res.send({ data: data })
+}
+
 module.exports = {
     followUnfollowUser,
     getFollowingUsers,
     addTwitterUser,
     deleteTwitterUser,
     getTwitterFeed,
-    getTwitterUser
+    getTwitterUser,
+    searchUser
 }
