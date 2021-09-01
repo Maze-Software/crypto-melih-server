@@ -25,7 +25,7 @@ route.post('/remove', async (req, res) => {
     await remove(req, res);
 });
 
-route.get('/getApplications', async (req, res) => {
+route.get('/getapplications', async (req, res) => {
     await getApplications(req, res);
 });
 

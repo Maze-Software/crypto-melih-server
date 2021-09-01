@@ -87,6 +87,7 @@ const getTwitterFeed = async (req, res) => {
     const tweetList = [];
     const users = [];
     for await (const row of getFollowings) {
+
         const userInfo = await getTwitterProfile(row.username);
         users.push(userInfo)
     }

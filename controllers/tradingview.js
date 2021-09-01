@@ -63,7 +63,12 @@ const remove = async (req, res) => {
 }
 const getApplications = async (req, res) => {
   if (await !isAdmin(req)) { return new errorHandler(res, 401, -1) }
-  const applications = await TradingViews.find({ status: { $ne: 3 } });
+  const applications = await TradingViews.find({ status: { $ne: 3 } }).lean();
+  let index = 0;
+  for await (const row of applications.map(e => e)) {
+    applications[index].user = await User.findById(row.userId);
+    index++
+  }
   return res.send({ data: applications })
 }
 
