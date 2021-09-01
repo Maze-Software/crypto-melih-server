@@ -48,15 +48,15 @@ const getTotalInvesting = async (req, res) => {
     const getUser = await checkLogin(req);
     if (!getUser) { return new errorHandler(res, 401, -1) }
     const getAllInvestings = await Investing.find({ userId: getUser._id, }).lean()
-    const totalAmount = getAllInvestings.reduce((accumulator, item) => accumulator + item.amount, 0);
-    // const totalPrice = getAllInvestings.reduce((accumulator, item) => accumulator + item.price, 0);
+    // const totalAmount = getAllInvestings.reduce((accumulator, item) => accumulator + item.amount, 0);
+    const totalPrice = getAllInvestings.reduce((accumulator, item) => accumulator + item.price, 0);
     const investings = getAllInvestings.map((item) => {
         return new Object({
             ...item,
-            percentage: 100 * item.amount / totalAmount
+            percentage: 100 * item.price / totalPrice
         })
     })
-    res.status(200).send({ data: investings, totalAmount: totalAmount })
+    res.status(200).send({ data: investings, totalPrice: totalPrice })
 }
 module.exports = {
     setInvesting,

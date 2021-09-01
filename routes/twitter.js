@@ -13,7 +13,6 @@ route.get('/followings', async (req, res) => {
 route.get('/feed', async (req, res) => {
     await getTwitterFeed(req, res);
 });
-
 route.post('/search', async (req, res) => {
     await searchUser(req, res);
 });
