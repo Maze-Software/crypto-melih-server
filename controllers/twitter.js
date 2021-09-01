@@ -45,11 +45,19 @@ const getTwitterProfile = async (username) => {
     return data.data;
 }
 
+
 const getTweetOfUser = async (id) => {
-    const data = await Axios.get("https://api.twitter.com/2/users/" + id + "/tweets?expansions=attachments.media_keys&tweet.fields=created_at,author_id,lang,source,public_metrics,context_annotations,entities", {
+    const data = await Axios.get("https://api.twitter.com/2/users/" + id + "/tweets?media.fields=duration_ms,height,media_key,preview_image_url,public_metrics,type,url,width,alt_text&tweet.fields=created_at,author_id,lang,source,public_metrics,context_annotations,entities", {
         headers: { 'Authorization': 'Bearer ' + config.twitterApi.token }
     })
     return data.data;
+}
+
+const test = async (req, res) => {
+    const data = await Axios.get("https://api.twitter.com/2/users/3218790124/tweets?media.fields=duration_ms,height,media_key,preview_image_url,public_metrics,type,url,width,alt_text&tweet.fields=created_at,author_id,lang,source,public_metrics,context_annotations,entities", {
+        headers: { 'Authorization': 'Bearer ' + config.twitterApi.token }
+    })
+    res.send({ data: data.data })
 }
 
 const getTwitterUser = async (req, res) => {
@@ -103,10 +111,22 @@ const getTwitterFeed = async (req, res) => {
     const users = [];
 
     for await (const user of getFeedUsers) {
-
-        tweetList.push(await getTweetOfUser(user.twitterId))
+        const twitterdata = await getTweetOfUser(user.twitterId)
+        if (twitterdata.data)
+            tweetList.push(twitterdata.data.map(e => new Object({ user: user, tweet: e })))
     }
-    res.send({ tweetList: tweetList })
+
+    /* Randomize array in-place using Durstenfeld shuffle algorithm */
+    function shuffleArray(array) {
+        for (var i = array.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+    }
+
+    res.send({ tweetList: tweetList.flat() })
 
 
 
@@ -164,5 +184,6 @@ module.exports = {
     deleteTwitterUser,
     getTwitterFeed,
     getTwitterUser,
-    searchUser
+    searchUser,
+    test
 }
