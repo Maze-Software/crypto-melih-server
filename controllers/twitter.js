@@ -19,6 +19,14 @@ const followUnfollowUser = async (req, res) => {
     }
     else {
         const follow = await new TwitterFollows({ username, userId }).save();
+        if (!await TwitterUser.exists({ username })) {
+            const getUserTwitter = await getTwitterProfile(username);
+            await new TwitterUser({
+                twitterId: getUserTwitter.id,
+                username: username,
+                info: getUserTwitter,
+            }).save();
+        }
         res.status(200).send({ status: "followed" })
     }
 }
@@ -80,22 +88,57 @@ const deleteTwitterUser = async (req, res) => {
     res.status(200).send({ message: "deleted" })
 }
 const getTwitterFeed = async (req, res) => {
+
     const getUser = await checkLogin(req);
     if (!getUser) { return new errorHandler(res, 401, -1) }
     const userId = getUser._id
-    const getFollowings = await TwitterFollows.find({ userId });
+    const getFollowings = await TwitterFollows.find({ userId }).lean();
+
+    const getFeedUsers = await TwitterUser.find({ username: { $in: getFollowings.map(e => e.username) } })
+
+
+
+
     const tweetList = [];
     const users = [];
-    for await (const row of getFollowings) {
 
-        const userInfo = await getTwitterProfile(row.username);
-        users.push(userInfo)
-    }
-    for await (const user of users) {
-        tweetList.push(await getTweetOfUser(user.id))
-    }
+    for await (const user of getFeedUsers) {
 
-    res.send({ tweetList: tweetList, user: users })
+        tweetList.push(await getTweetOfUser(user.twitterId))
+    }
+    res.send({ tweetList: tweetList })
+
+
+
+
+
+    // const data = await Axios.get("https://api.twitter.com/2/users?ids=" + getFeedUsers.map(e => e.twitterId), {
+    //     params: { "tweet.fields": 0 },
+    //     headers: { 'Authorization': 'Bearer ' + config.twitterApi.token }
+    // })
+
+
+    // // console.log(data.data)
+    // res.send({ as: data.data })
+
+
+
+    // const getUser = await checkLogin(req);
+    // if (!getUser) { return new errorHandler(res, 401, -1) }
+    // const userId = getUser._id
+    // const getFollowings = await TwitterFollows.find({ userId });
+    // const tweetList = [];
+    // const users = [];
+    // for await (const row of getFollowings) {
+
+    //     const userInfo = await getTwitterProfile(row.username);
+    //     users.push(userInfo)
+    // }
+    // for await (const user of users) {
+    //     tweetList.push(await getTweetOfUser(user.id))
+    // }
+
+    // res.send({ tweetList: tweetList, user: users })
 }
 
 const searchUser = async (req, res) => {

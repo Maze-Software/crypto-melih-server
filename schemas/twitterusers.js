@@ -6,7 +6,6 @@ const Schema = mongoose.Schema;
 const schema = new Schema({
     twitterId: { type: String, required: false },
     username: { type: String, required: true },
-    image: { type: String, required: false },
     info: { type: Object, required: false },
 }, { timestamps: true });
 
