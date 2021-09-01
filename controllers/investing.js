@@ -10,7 +10,7 @@ const setInvesting = async (req, res) => {
         price,
         note,
         currency,
-
+        date
 
     } = req.body;
 
@@ -20,7 +20,8 @@ const setInvesting = async (req, res) => {
         price,
         note,
         currency,
-        userId: getUser._id
+        userId: getUser._id,
+        date
 
     }).save();
     res.status(200).send({ message: "ok", data: createInvesting })
@@ -42,8 +43,17 @@ const deleteInvesting = async (req, res) => {
 
 }
 
+const getTotalInvesting = async (req, res) => {
+
+    const getUser = await checkLogin(req);
+    if (!getUser) { return new errorHandler(res, 401, -1) }
+
+
+
+}
 module.exports = {
     setInvesting,
     getUserInvesting,
-    deleteInvesting
+    deleteInvesting,
+    getTotalInvesting
 }
