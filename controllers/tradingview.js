@@ -16,14 +16,11 @@ const getStatus = async (req, res) => {
   if (await !isUserSubscribed(getUser)) { return new errorHandler(res, 401, -1) }
 
   const findRecord = await TradingViews.find({ userId: getUser._id })
-
   if (!findRecord) {
     return res.send({ status: 0 })
   }
   else {
-    if (!findRecord) {
-      return res.send({ status: findRecord.status })
-    }
+    return res.send({ status: findRecord[0].status })
   }
 }
 const apply = async (req, res) => {
