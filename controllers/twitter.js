@@ -13,6 +13,7 @@ const followUnfollowUser = async (req, res) => {
     if (!username) { return new errorHandler(res, 500, 1) }
     const userId = getUser._id;
     const checkExits = await TwitterFollows.exists({ username, userId });
+    if (req.body.safe && checkExits) { return res.send({ already: true }) }
     if (checkExits) {
         await TwitterFollows.deleteOne({ username, userId });
         res.status(200).send({ status: "unfollowed" })
@@ -35,7 +36,9 @@ const getFollowingUsers = async (req, res) => {
     if (!getUser) { return new errorHandler(res, 401, -1) }
     const userId = getUser._id;
     const followings = await TwitterFollows.find({ userId }).lean();
-    res.send({ followings: followings.map(e => e.username) })
+    const getFeedUsers = await TwitterUser.find({ username: { $in: followings.map(e => e.username) } })
+
+    res.send({ followings: getFeedUsers })
 }
 
 const getTwitterProfile = async (username) => {
@@ -126,7 +129,7 @@ const getTwitterFeed = async (req, res) => {
         }
     }
 
-    res.send({ tweetList: tweetList.flat() })
+    res.send({ tweetList: tweetList.flat().sort(() => Math.random() - 0.5) })
 
 
 

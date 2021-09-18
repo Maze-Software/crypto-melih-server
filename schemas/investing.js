@@ -9,7 +9,7 @@ const investing = new Schema({
     amount: { type: Number, required: false },
     date: { type: Date, required: false },
     price: { type: Number, required: false },
-    note: { type: String, required: true, default: true },
+    note: { type: String, required: false, default: true },
     currency: { type: String, required: true }, // 0 lower 1 upper
 }, { timestamps: true });
 
