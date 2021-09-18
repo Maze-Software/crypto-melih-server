@@ -56,7 +56,26 @@ const getTotalInvesting = async (req, res) => {
             percentage: 100 * item.price / totalPrice
         })
     })
-    res.status(200).send({ data: investings, totalPrice: totalPrice })
+
+    let uniqueInvestings = []
+    investings.forEach((e) => {
+        const findIndex = uniqueInvestings.findIndex(q => q.currency == e.currency && q.coinType == e.coinType)
+        if (findIndex > -1) {
+            uniqueInvestings[findIndex] = {
+                ...uniqueInvestings[findIndex],
+                percentage: uniqueInvestings[findIndex].percentage + e.percentage,
+                repetitive: uniqueInvestings[findIndex].repetitive + 1,
+                totalAmount: uniqueInvestings[findIndex].amount + e.amount,
+                totalPrice: uniqueInvestings[findIndex].price + e.price
+
+            }
+        }
+        else {
+            uniqueInvestings.push({ ...e, repetitive: 0 })
+        }
+    });
+
+    res.status(200).send({ data: investings, totalPrice: totalPrice, uniqueInvestings: uniqueInvestings })
 }
 module.exports = {
     setInvesting,
