@@ -3,7 +3,7 @@ const TwitterFollows = require('../schemas/twitterfollowings')
 const TwitterUser = require('../schemas/twitterusers')
 const User = require('../schemas/user')
 const { checkMissingParams, checkLogin, isAdmin } = require('./general');
-const errorHandler = require('./errorHandler');
+const errorHandler = require('./errorhandler');
 const Axios = require('axios').default;
 const config = require('../config.json')
 const followUnfollowUser = async (req, res) => {

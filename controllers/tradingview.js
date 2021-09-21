@@ -1,5 +1,5 @@
 
-const errorHandler = require("./errorHandler");
+const errorHandler = require("./errorhandler");
 const { isAdmin, checkLogin, checkMissingParams, isUserSubscribed } = require("./general");
 const bcrypt = require("bcryptjs");
 const config = require("../config.json");

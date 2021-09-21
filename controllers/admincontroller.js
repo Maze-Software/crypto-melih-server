@@ -1,5 +1,5 @@
 
-const errorHandler = require("./errorHandler");
+const errorHandler = require("./errorhandler");
 const Admins = require("../schemas/admins");
 const { isAdmin, checkLogin, checkMissingParams } = require("./general");
 const bcrypt = require("bcryptjs");

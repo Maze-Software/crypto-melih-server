@@ -1,12 +1,11 @@
 ﻿// const { param, use } = require('../routes/RegisterUser');
 const User = require('../schemas/user');
 var validator = require('validator');
-const errorHandler = require('./ErrorHandler');
+const errorHandler = require('./errorhandler');
 const { checkMissingParams, checkLogin, isUserSubscribed } = require('./General');
 const bcrypt = require('bcryptjs');
 const config = require('../config.json');
 var jwt = require('jsonwebtoken');
-const ErrorHandler = require('./ErrorHandler');
 
 
 

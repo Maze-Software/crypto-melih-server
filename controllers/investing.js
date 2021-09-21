@@ -1,6 +1,6 @@
 const Investing = require('../schemas/investing')
 const { checkMissingParams, checkLogin } = require('./general');
-const errorHandler = require('./errorHandler');
+const errorHandler = require('./errorhandler');
 const Axios = require('axios').default
 
 const setInvesting = async (req, res) => {

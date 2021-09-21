@@ -1,6 +1,6 @@
 const News = require('../schemas/news')
 const { checkMissingParams, checkLogin, isAdmin } = require('./general');
-const errorHandler = require('./errorHandler');
+const errorHandler = require('./errorhandler');
 
 const getNews = async (req, res) => {
     if (await !checkLogin(req)) { return new errorHandler(res, 401, -1) }

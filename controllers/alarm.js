@@ -1,6 +1,6 @@
 const Alarm = require('../schemas/cryptoalarm')
 const { checkMissingParams, checkLogin } = require('./general');
-const errorHandler = require('./errorHandler');
+const errorHandler = require('./errorhandler');
 const Axios = require('axios').default
 
 const setAlarm = async (req, res) => {
