@@ -2,7 +2,7 @@
 const User = require('../schemas/user');
 var validator = require('validator');
 const errorHandler = require('./errorhandler');
-const { checkMissingParams, checkLogin, isUserSubscribed } = require('./General');
+const { checkMissingParams, checkLogin, isUserSubscribed } = require('./general');
 const bcrypt = require('bcryptjs');
 const config = require('../config.json');
 var jwt = require('jsonwebtoken');
