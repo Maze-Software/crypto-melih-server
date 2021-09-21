@@ -4,24 +4,34 @@ const express = require('express');
 const mongoose = require('mongoose');
 const route = express.Router();
 
-const { _isUserSubscribed, changeUserProfile, changePassword, changeUserProfile } = require('../controllers/usercontroller');
+const { _isUserSubscribed, sendMail, changeUserProfile, getUser, changePassword, forgetPassword } = require('../controllers/usercontroller');
 
 route.get('/isusersubscribed', async (req, res) => {
-    _isUserSubscribed();
+    await _isUserSubscribed(req, res);
 });
 
 route.post('/changepassword', async (req, res) => {
-    changePassword();
+    await changePassword(req, res);
 });
 
 
 route.post('/forgetpassword', async (req, res) => {
-    forgetPassword();
+    await forgetPassword(req, res);
 });
 
 
 route.post('/changeprofile', async (req, res) => {
-    changeUserProfile();
+    await changeUserProfile(req, res);
 });
+
+route.get('/', async (req, res) => {
+    await getUser(req, res);
+});
+
+route.post('/contact', async (req, res) => {
+    await sendMail(req, res);
+});
+
+
 
 module.exports = route;

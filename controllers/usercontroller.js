@@ -1,25 +1,12 @@
 ﻿// const { param, use } = require('../routes/RegisterUser');
 const User = require('../schemas/user');
-const Admins = require('../schemas/Admins');
 var validator = require('validator');
 const errorHandler = require('./ErrorHandler');
 const { checkMissingParams, checkLogin, isUserSubscribed } = require('./General');
 const bcrypt = require('bcryptjs');
 const config = require('../config.json');
 var jwt = require('jsonwebtoken');
-const { request } = require('express');
-const Category = require("../schemas/Category");
-const Video = require('../schemas/Videos');
-const VideoPart = require('../schemas/VideoParts');
-const WatchedInfo = require('../schemas/WatchedInfo');
-var nodemailer = require('nodemailer');
 const ErrorHandler = require('./ErrorHandler');
-const { schema, count } = require('../schemas/user');
-const Payments = require('../schemas/Payments');
-var Iyzipay = require('iyzipay');
-const Prices = require('../schemas/Prices');
-const ScreenShot = require('../schemas/ScreenShots');
-var iyzipay = new Iyzipay(config.iyziCo);
 
 
 
@@ -227,8 +214,9 @@ const login = async (req, res) => {
 const changeUserProfile = async (req, res) => {
     try {
         if (await checkLogin(req)) { // Admin ise
-            const { firstName, lastName, email, country, university, city, phone } = req.body;
-
+            const body = req.body;
+            const email = req.body.email
+            delete body.hash
             const token = req.cookies.token;
             var userResult = jwt.verify(token, config.privateKey);
             const user = await User.findOne({ email: userResult.email })
@@ -241,7 +229,7 @@ const changeUserProfile = async (req, res) => {
 
                 }
 
-                await user.updateOne({ firstName, lastName, email, country, university, city, phone });
+                await user.updateOne({ ...body });
                 const newUser = await User.findById(user._id)
 
                 res.status(200).send({ token: newToken, user: newUser })
@@ -252,6 +240,24 @@ const changeUserProfile = async (req, res) => {
 
 
         }
+    }
+    catch (e) {
+        console.log(e)
+        // new errorHandler(res, 500, 0)
+        res.status(500).send({ error: 'error' })
+    }
+}
+
+const getUser = async (req, res) => {
+    try {
+        const user = await checkLogin(req)
+        if (user) {
+            res.status(200).send({ user: user })
+        }
+        else {
+            res.status(500).send({ error: 'Kullanıcı bulunamadı' })
+        }
+
     }
     catch (e) {
         console.log(e)
@@ -279,7 +285,7 @@ const changePassword = async (req, res) => {
                 res.status(200).send({ user: newUser })
             }
             else {
-                res.status(500).send({ error: "Old password was not correct" })
+                res.status(500).send({ error: "Eski şifre doğru değil" })
             }
 
 
@@ -342,12 +348,12 @@ const sendMail = async (req, res) => {
                 {
                     "From": {
                         "Email": "maze.software.mail.sender@gmail.com",
-                        "Name": "Maze"
+                        "Name": "Cuzdan App"
                     },
                     "To": [
                         {
                             "Email": config.mailAdress,
-                            "Name": "Maze Software Mail Sender : Dr. Patris"
+                            "Name": "Maze Software Mail Sender : Cuzdan App"
                         }
                     ],
                     "Subject": "Kullanıcınız Yeni Mesajınız Var",
@@ -390,17 +396,17 @@ const forgetPassword = async (req, res) => {
                     {
                         "From": {
                             "Email": "maze.software.mail.sender@gmail.com",
-                            "Name": "Maze"
+                            "Name": "Cuzdan App"
                         },
                         "To": [
                             {
                                 "Email": email,
-                                "Name": "Dr. Patris Lectures"
+                                "Name": "User"
                             }
                         ],
-                        "Subject": "Change Password Request",
-                        "TextPart": "You have requested new password",
-                        "HTMLPart": "<br><br><strong> Your new password: </strong>" + newPassword
+                        "Subject": "Şifre sıfırlama isteği",
+                        "TextPart": "Şifre sıfırlama isteği gönderdiniz.",
+                        "HTMLPart": "Şifre sıfırlama isteğiniz başarlı. <br><br><strong> Yeni şifreniz: </strong>" + newPassword
                     }
                 ]
             })
@@ -1059,4 +1065,12 @@ const termsAndCondition = (req, res) => {
     res.send("yok")
 }
 
-module.exports = { termsAndCondition, getScreenShotRemains, takeScreenShot, registerUser, logOut, login, refreshToken, changeUserProfile, _isUserSubscribed, changePassword, sendMail, forgetPassword, watchedInfo, getWatchedInfo, paymentForm, paymentCallBack, getListCombo, getSuggestedVideos };
+module.exports = {
+    termsAndCondition,
+    getScreenShotRemains,
+    takeScreenShot,
+    registerUser,
+    getUser,
+    logOut, login,
+    refreshToken, changeUserProfile, _isUserSubscribed, changePassword, sendMail, forgetPassword, paymentForm, paymentCallBack, getSuggestedVideos
+};
