@@ -1,14 +1,15 @@
 
 const errorHandler = require("./errorHandler");
+const Admins = require("../schemas/admins");
 const { isAdmin, checkLogin, checkMissingParams } = require("./general");
 const bcrypt = require("bcryptjs");
 const config = require("../config.json");
 var jwt = require("jsonwebtoken");
-const Admins = require("../schemas/Admins");
 const Axios = require("axios");
 const User = require("../schemas/user");
 const Settings = require("../schemas/settings");
 const Prices = require("../schemas/prices");
+
 
 const adminLogin = async (req, res) => {
   if ((await checkLogin(req)) == false) {
