@@ -2,7 +2,7 @@ const errorHandler = require('./errorHandler');
 var jwt = require('jsonwebtoken');
 const config = require('../config.json');
 
-const Admins = require('../schemas/Admins');
+const Admins = require('../schemas/admins');
 const checkMissingParams = (array, req, res) => {
     try {
         array.forEach(key => {
