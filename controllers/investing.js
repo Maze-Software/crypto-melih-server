@@ -71,7 +71,7 @@ const getTotalInvesting = async (req, res) => {
             }
         }
         else {
-            uniqueInvestings.push({ ...e, repetitive: 0 })
+            uniqueInvestings.push({ ...e, repetitive: 1, totalAmount: e.amount, totalPrice: e.price })
         }
     });
 
