@@ -3,8 +3,8 @@ var jwt = require('jsonwebtoken');
 const config = require('../config.json');
 const general = require('./general');
 const test = async (req, res) => {
-    await general.activeUserSubscription(1, "611595039ed335ff3a7808d6")
-    res.send("ok")
+    const status = await general.activeUserSubscription(1, "611bb7b78d5026274147c418")
+    res.send(status)
 }
 module.exports = { test };
 const User = require('../schemas/user');

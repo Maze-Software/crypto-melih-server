@@ -70,17 +70,23 @@ const isAdmin = async (req) => {
 }
 
 const isUserSubscribed = async (userObj) => {
-    let subscriptionEndDate = new Date(userObj.subscriptionEndDate).getTime();
-    let nowDate = new Date().getTime();
-    let constraint = userObj.subscription && nowDate < subscriptionEndDate;
-    return constraint;
+    try {
+
+        let subscriptionEndDate = new Date(userObj.subscriptionEndDate).getTime();
+        let nowDate = new Date().getTime();
+        let constraint = userObj.subscription && nowDate < subscriptionEndDate;
+        return constraint;
+    }
+    catch (e) {
+        return false
+    }
 }
 
-const activeUserSubscription = async (month, userId) => {
+const activeUserSubscription = async (month = 1, userId) => {
     const user = await User.findById(userId)
     if (user) {
-        const newDate = new Date();
-        const subscriptionEndDate = newDate.setMonth(newDate.getMonth())
+        const newDate = new Date(user.subscriptionEndDate);
+        const subscriptionEndDate = newDate.setMonth(newDate.getMonth() + month)
         await User.findByIdAndUpdate(user._id, { subscription: true, subscriptionEndDate: subscriptionEndDate })
         return true
     }

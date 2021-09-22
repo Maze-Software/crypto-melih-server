@@ -1,6 +1,6 @@
 {
-  "DBuri": "mongodb://cuzdanapp:Melihcaglarapp14.@localhost:27017/?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false",
-  "DBuri-old": "mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false",
+  "DBuri": "mongodb://cuzdanapp:Melihcaglarapp14.@3.68.216.184:27017/?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false",
+  "DBuri-old": "mongodb://cuzdanapp:Melihcaglarapp14.@localhost:27017/?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false",
   "privateKey": "secretKey00009",
   "mailAdress": "xtanakart@gmail.com",
   "appstoreReview": false,

@@ -14,6 +14,7 @@ route.get('/', async (req, res) => {
 route.post('/', async (req, res) => {
     const message = JSON.parse(req.body.text.replace(/'/g, '"').replace('message', '"message"').replace('coin', '"coin"').replace('value', '"value"'))
     //TODO : Push notification Sadece satın almış olanlara
+    console.log(message);
     const addAlarm = await new VipAlarms({ ...message }).save();
     res.send("ok")
 });

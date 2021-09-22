@@ -48,6 +48,7 @@ app.use("/api/upload", require("./routes/upload"));
 app.use("/api/investing", require("./routes/investing"));
 app.use("/api/alert", require("./routes/alert"));
 app.use("/api/user", require("./routes/user"));
+app.use("/api/buy", require("./routes/buy"));
 
 
 // -- ROUTES -- //
