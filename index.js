@@ -113,7 +113,8 @@ app.use("/api/user", require("./routes/user"));
 
 const socketInit = require("./socket/index.js");
 app.get("/", function (req, res) {
-  res.sendFile(__dirname + "/Socket/html/index.html");
+  // res.sendFile(__dirname + "/Socket/html/index.html");
+  res.send("cuzdanapp")
 });
 
 
