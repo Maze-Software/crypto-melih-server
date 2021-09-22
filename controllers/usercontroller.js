@@ -212,13 +212,14 @@ const login = async (req, res) => {
 
 const changeUserProfile = async (req, res) => {
     try {
-        if (await checkLogin(req)) { // Admin ise
+        const getUser = await checkLogin(req)
+        if (getUser) { // Admin ise
             const body = req.body;
             const email = req.body.email
             delete body.hash
             const token = req.cookies.token;
             var userResult = jwt.verify(token, config.privateKey);
-            const user = await User.findOne({ email: userResult.email })
+            const user = getUser;
             if (user) {
 
                 let newToken = token;
