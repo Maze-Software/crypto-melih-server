@@ -1,0 +1,175 @@
+[{
+  "_id": {
+    "$oid": "6117a1da5a788a0534341660"
+  },
+  "subscription": true,
+  "subscriptionEndDate": {
+    "$date": "2022-08-14T10:58:17.989Z"
+  },
+  "priceId": null,
+  "promotionEmail": true,
+  "referralCode": "FOO0JLI",
+  "username": "ledmago",
+  "firstName": "Caner",
+  "lastName": "Koçaş",
+  "email": "canerk@gmail.com",
+  "hash": "$2a$12$1JfzGgMCCcHX9/jWABL7quZXTngE.Y2FaboXZ84bv2Vgn3H0uaXOq",
+  "phone": "05313061213",
+  "createdAt": {
+    "$date": "2021-08-14T10:58:34.571Z"
+  },
+  "updatedAt": {
+    "$date": "2021-08-14T10:58:34.571Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "611bb7b78d5026274147c418"
+  },
+  "subscription": false,
+  "subscriptionEndDate": {
+    "$date": "2021-08-17T13:17:42.109Z"
+  },
+  "priceId": null,
+  "promotionEmail": true,
+  "referralCode": "947J024",
+  "profilePicture": "false",
+  "username": "ledmago2",
+  "firstName": "Hanzo",
+  "lastName": "Doğan",
+  "email": "firatdogan0@gmail.com",
+  "hash": "$2a$12$/whLLMpstI17PCddIlLE3ukcLH/PaOqtiDsmVWkPSSVLbmwfua0RG",
+  "phone": "05313061213",
+  "createdAt": {
+    "$date": "2021-08-17T13:20:55.135Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-21T18:18:51.934Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "611bc6bb3cfd902c579b3b5e"
+  },
+  "subscription": false,
+  "subscriptionEndDate": {
+    "$date": "2021-08-17T13:53:48.677Z"
+  },
+  "priceId": null,
+  "promotionEmail": true,
+  "referralCode": "PM190AN",
+  "profilePicture": "",
+  "username": "Qwe",
+  "firstName": "Fırat",
+  "lastName": "Dogan",
+  "email": "asd@casdo.com",
+  "hash": "$2a$12$tOOgsPc1MMrOcLB0dWdfPulhhSHekbRaa/zEwRN/BQcjWu1x4qm6a",
+  "phone": "05313061123",
+  "createdAt": {
+    "$date": "2021-08-17T14:24:59.101Z"
+  },
+  "updatedAt": {
+    "$date": "2021-08-17T14:24:59.101Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "611bc72b3cfd902c579b3b5f"
+  },
+  "subscription": false,
+  "subscriptionEndDate": {
+    "$date": "2021-08-17T13:53:48.677Z"
+  },
+  "priceId": null,
+  "promotionEmail": true,
+  "referralCode": "D2ZOQ3I",
+  "profilePicture": "",
+  "username": "Erdem",
+  "firstName": "Asdasd",
+  "lastName": "Asdasd",
+  "email": "qweqw@sdsd.com",
+  "hash": "$2a$12$ueIkaGK7EHSpa3nXjenDjuv2FoAQwbTUbbIr09hyC4uPxcZoi3Th6",
+  "phone": "05313061213",
+  "createdAt": {
+    "$date": "2021-08-17T14:26:51.524Z"
+  },
+  "updatedAt": {
+    "$date": "2021-08-17T14:26:51.524Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "611bc9f53cfd902c579b3b60"
+  },
+  "subscription": false,
+  "subscriptionEndDate": {
+    "$date": "2021-08-17T13:53:48.677Z"
+  },
+  "priceId": null,
+  "promotionEmail": true,
+  "referralCode": "098XHG0",
+  "profilePicture": "",
+  "username": "Asd",
+  "firstName": "Asd",
+  "lastName": "Asd",
+  "email": "qwe@asd.com",
+  "hash": "$2a$12$N30IMWlCJtEAiiwEa79zpebASj2zgjmcVZ8YZp4ACI.nwdefOV2IS",
+  "phone": "Qwe",
+  "createdAt": {
+    "$date": "2021-08-17T14:38:45.584Z"
+  },
+  "updatedAt": {
+    "$date": "2021-08-17T14:38:45.584Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "611cad3716209a0c910a3154"
+  },
+  "subscription": false,
+  "subscriptionEndDate": {
+    "$date": "2021-08-18T06:47:13.708Z"
+  },
+  "priceId": null,
+  "promotionEmail": true,
+  "referralCode": "ISGMH10",
+  "profilePicture": "",
+  "username": "ledmago1",
+  "firstName": "Fırat",
+  "lastName": "Doğan",
+  "email": "firatdogan01@gmail.com",
+  "hash": "$2a$12$lHlOEhnpK9YJpSbmD5Aif.g.oOuMpO982A9.Yulughvd3/ezzEvIe",
+  "phone": "05313061213",
+  "createdAt": {
+    "$date": "2021-08-18T06:48:23.664Z"
+  },
+  "updatedAt": {
+    "$date": "2021-08-18T06:48:23.664Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6128e15c2d9a601980d96f33"
+  },
+  "subscription": false,
+  "subscriptionEndDate": {
+    "$date": "2021-08-27T12:56:12.895Z"
+  },
+  "priceId": null,
+  "promotionEmail": true,
+  "referralCode": "945BIDY",
+  "profilePicture": "",
+  "username": "ledmago23",
+  "firstName": "Caner",
+  "lastName": "Koçaş",
+  "email": "caner22k@gmail.com",
+  "hash": "$2a$12$jnOdQjs81btXPtJlw0gyTenKhD73dTePt3hY2Nd2WRyAGtOVapRRS",
+  "phone": "05313061213",
+  "createdAt": {
+    "$date": "2021-08-27T12:58:04.029Z"
+  },
+  "updatedAt": {
+    "$date": "2021-08-27T12:58:04.029Z"
+  },
+  "__v": 0
+}]

@@ -1,0 +1,92 @@
+[{
+  "_id": {
+    "$oid": "612fb242a5f5d60f4672956c"
+  },
+  "username": "ledmago",
+  "userId": "6117a1da5a788a0534341660",
+  "createdAt": {
+    "$date": "2021-09-01T17:02:58.811Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-01T17:02:58.811Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "612fb3116369700f9acd99bb"
+  },
+  "username": "zaferayan",
+  "userId": "6117a1da5a788a0534341660",
+  "createdAt": {
+    "$date": "2021-09-01T17:06:25.514Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-01T17:06:25.514Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "612fb3166369700f9acd99bd"
+  },
+  "username": "mervenoyan",
+  "userId": "6117a1da5a788a0534341660",
+  "createdAt": {
+    "$date": "2021-09-01T17:06:30.205Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-01T17:06:30.205Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "612fb3496369700f9acd99bf"
+  },
+  "username": "chabyhan",
+  "userId": "6117a1da5a788a0534341660",
+  "createdAt": {
+    "$date": "2021-09-01T17:07:21.346Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-01T17:07:21.346Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "612fb3596369700f9acd99c1"
+  },
+  "username": "AbdulkerimDrmz_",
+  "userId": "6117a1da5a788a0534341660",
+  "createdAt": {
+    "$date": "2021-09-01T17:07:37.995Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-01T17:07:37.995Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "612fb3756369700f9acd99c5"
+  },
+  "username": "youyuxi",
+  "userId": "6117a1da5a788a0534341660",
+  "createdAt": {
+    "$date": "2021-09-01T17:08:05.381Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-01T17:08:05.381Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61309d36e5fc37046d6ce8a0"
+  },
+  "username": "Necati_Berk",
+  "userId": "6117a1da5a788a0534341660",
+  "createdAt": {
+    "$date": "2021-09-02T09:45:26.251Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-02T09:45:26.251Z"
+  },
+  "__v": 0
+}]

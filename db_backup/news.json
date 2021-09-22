@@ -1,0 +1,76 @@
+[{
+  "_id": {
+    "$oid": "611a6500744e7e2d142a97e4"
+  },
+  "title": "Kripto Dünyası Çöküşte",
+  "content": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.",
+  "image": "https://trthaberstatic.cdaan.wp.trt.com.tr/resimler/1512000/bitcoin-kripto-para-1513059.jpg",
+  "link": "http://google.com",
+  "createdAt": {
+    "$date": "2021-08-16T13:15:44.344Z"
+  },
+  "updatedAt": {
+    "$date": "2021-08-17T12:06:11.030Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "611a697d744e7e2d142a97e6"
+  },
+  "title": "resimtest",
+  "content": "panel içerikresim test",
+  "image": "C:\\fakepath\\eren.jpg",
+  "link": "resimtest",
+  "createdAt": {
+    "$date": "2021-08-16T13:34:53.447Z"
+  },
+  "updatedAt": {
+    "$date": "2021-08-16T13:34:53.447Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "611b9569438c0d0471cb55c7"
+  },
+  "title": "asdasd",
+  "content": "asdasdasdasd",
+  "image": "C:\\fakepath\\209105790_110500007953911_8858357457882788427_n.jpeg",
+  "link": "asdasdas",
+  "createdAt": {
+    "$date": "2021-08-17T10:54:33.961Z"
+  },
+  "updatedAt": {
+    "$date": "2021-08-17T10:54:33.961Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "611bb2426daec541c4b2f09c"
+  },
+  "title": "refreshtest",
+  "content": "refreshtest",
+  "image": "C:\\fakepath\\eren.jpg",
+  "link": "refreshtest",
+  "createdAt": {
+    "$date": "2021-08-17T12:57:38.529Z"
+  },
+  "updatedAt": {
+    "$date": "2021-08-17T12:57:38.529Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "611bb2716daec541c4b2f09d"
+  },
+  "title": "sasasa",
+  "content": "assa",
+  "image": "",
+  "link": "assa",
+  "createdAt": {
+    "$date": "2021-08-17T12:58:25.123Z"
+  },
+  "updatedAt": {
+    "$date": "2021-08-17T12:58:25.123Z"
+  },
+  "__v": 0
+}]

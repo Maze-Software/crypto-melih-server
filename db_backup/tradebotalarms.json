@@ -1,0 +1,57 @@
+[{
+  "_id": {
+    "$oid": "614a180e629e630d8b2fff10"
+  },
+  "coin": "XRPUSDTPERP",
+  "message": "şimdi alma zamanı",
+  "value": "10.27",
+  "createdAt": {
+    "$date": "2021-09-21T17:36:14.332Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-21T17:36:14.332Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "614a18252c90e90da2d614b1"
+  },
+  "coin": "XRPUSDTPERP",
+  "message": "şimdi alma zamanı",
+  "value": "10.27",
+  "createdAt": {
+    "$date": "2021-09-21T17:36:37.447Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-21T17:36:37.447Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "614a183649cf160db7e129c7"
+  },
+  "coin": "XRPUSDTPERP",
+  "message": "şimdi alma zamanı",
+  "value": "10.27",
+  "createdAt": {
+    "$date": "2021-09-21T17:36:54.093Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-21T17:36:54.093Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "614a1885aae5e40e0ce5d8c7"
+  },
+  "coin": "asd",
+  "value": "12",
+  "message": "asd",
+  "createdAt": {
+    "$date": "2021-09-21T17:38:13.462Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-21T17:38:13.462Z"
+  },
+  "__v": 0
+}]

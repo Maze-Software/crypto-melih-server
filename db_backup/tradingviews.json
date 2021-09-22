@@ -1,0 +1,60 @@
+[{
+  "_id": {
+    "$oid": "611a6d1f5d2c2d34fcea5f98"
+  },
+  "title": "title sada",
+  "tradingViewId": "2121",
+  "description": "to the mooooon",
+  "createdAt": {
+    "$date": "2021-08-16T13:50:23.452Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-01T11:05:59.194Z"
+  },
+  "__v": 0,
+  "status": 3
+},{
+  "_id": {
+    "$oid": "611bb27d6daec541c4b2f09e"
+  },
+  "title": "refresindi",
+  "tradingViewId": "refresindi",
+  "description": "refresindi",
+  "createdAt": {
+    "$date": "2021-08-17T12:58:37.217Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-01T11:06:48.801Z"
+  },
+  "__v": 0,
+  "status": 3
+},{
+  "_id": {
+    "$oid": "611bb2ae6daec541c4b2f09f"
+  },
+  "title": "12312",
+  "tradingViewId": "12312",
+  "description": "12312",
+  "createdAt": {
+    "$date": "2021-08-17T12:59:26.747Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-01T11:06:47.802Z"
+  },
+  "__v": 0,
+  "status": 3
+},{
+  "_id": {
+    "$oid": "612f56ee701c265df88ab1b5"
+  },
+  "userId": "6117a1da5a788a0534341660",
+  "tradingViewName": "cryptocano",
+  "status": 1,
+  "createdAt": {
+    "$date": "2021-09-01T10:33:18.430Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-01T10:33:18.430Z"
+  },
+  "__v": 0
+}]

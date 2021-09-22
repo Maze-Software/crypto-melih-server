@@ -1,0 +1,26 @@
+[{
+  "_id": {
+    "$oid": "611594ce9ed335ff3a77dfa9"
+  },
+  "subscription": false,
+  "subscriptionEndDate": {
+    "$date": "2021-08-12T11:04:53.221Z"
+  },
+  "priceId": null,
+  "promotionEmail": true,
+  "firstName": "Fırat",
+  "lastName": "Doğan",
+  "email": "admin@admin.com",
+  "hash": "$2a$12$VFimUv8bAo65y.cmU8HzXumA3aR3nE6YDNIZsHXQXPYKcgVohTqWG",
+  "phone": "05313061213",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "611a77fc5d2c2d34fcea5f9d"
+  },
+  "email": "caner@gmail.com",
+  "hash": "$2a$12$v2RNqL5BJWGEZ3iRufND/O1MUQXD.D0KQWoN3P1.an20lsP18aTaO",
+  "firstName": "caner",
+  "lastName": "koçaş",
+  "__v": 0
+}]

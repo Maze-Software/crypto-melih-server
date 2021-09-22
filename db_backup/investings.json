@@ -1,0 +1,121 @@
+[{
+  "_id": {
+    "$oid": "6131f80ceb19860c8acf7444"
+  },
+  "note": "Beleeeş",
+  "coinType": "ada",
+  "amount": 10,
+  "price": 20,
+  "currency": "try",
+  "userId": "6117a1da5a788a0534341660",
+  "date": {
+    "$date": "2021-03-08T21:00:00Z"
+  },
+  "createdAt": {
+    "$date": "2021-09-03T10:25:16.730Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-03T10:25:16.730Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6131fb38eb19860c8acf7446"
+  },
+  "note": "",
+  "coinType": "ada",
+  "amount": 10,
+  "price": 26.04,
+  "currency": "try",
+  "userId": "6117a1da5a788a0534341660",
+  "date": {
+    "$date": "2021-09-03T10:37:16.846Z"
+  },
+  "createdAt": {
+    "$date": "2021-09-03T10:38:48.950Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-03T10:38:48.950Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6132169feb19860c8acf744b"
+  },
+  "note": "",
+  "coinType": "doge",
+  "amount": 100,
+  "price": 20,
+  "currency": "try",
+  "userId": "6117a1da5a788a0534341660",
+  "date": {
+    "$date": "2021-03-07T21:00:00Z"
+  },
+  "createdAt": {
+    "$date": "2021-09-03T12:35:43.506Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-03T12:35:43.506Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "613217a2eb19860c8acf744c"
+  },
+  "note": "",
+  "coinType": "ceth",
+  "amount": 10,
+  "price": 5,
+  "currency": "usd",
+  "userId": "6117a1da5a788a0534341660",
+  "date": {
+    "$date": "2021-03-07T21:00:00Z"
+  },
+  "createdAt": {
+    "$date": "2021-09-03T12:40:02.175Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-03T12:40:02.175Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6145c9b45f0643115dfe847a"
+  },
+  "note": "",
+  "coinType": "doge",
+  "amount": 10,
+  "price": 10,
+  "currency": "try",
+  "userId": "6117a1da5a788a0534341660",
+  "date": {
+    "$date": "2021-09-18T11:12:25.181Z"
+  },
+  "createdAt": {
+    "$date": "2021-09-18T11:12:52.334Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-18T11:12:52.334Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6145ca6d5f0643115dfe847b"
+  },
+  "note": "",
+  "coinType": "doge",
+  "amount": 10,
+  "price": 1.07,
+  "currency": "try",
+  "userId": "6117a1da5a788a0534341660",
+  "date": {
+    "$date": "2021-09-18T11:12:25.181Z"
+  },
+  "createdAt": {
+    "$date": "2021-09-18T11:15:57.865Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-18T11:15:57.865Z"
+  },
+  "__v": 0
+}]

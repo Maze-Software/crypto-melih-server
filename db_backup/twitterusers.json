@@ -1,0 +1,1291 @@
+[{
+  "_id": {
+    "$oid": "612fb2d19216010f7ca3881a"
+  },
+  "twitterId": "3218790124",
+  "username": "ledmangos",
+  "info": {
+    "id": 3218790124,
+    "id_str": "3218790124",
+    "name": "Fırat",
+    "screen_name": "Ledmangos",
+    "location": "Ankara, Türkiye",
+    "profile_location": {
+      "id": "3d0271e51a6f4ff5",
+      "url": "https://api.twitter.com/1.1/geo/id/3d0271e51a6f4ff5.json",
+      "place_type": "unknown",
+      "name": "Ankara, Türkiye",
+      "full_name": "Ankara, Türkiye",
+      "country_code": "",
+      "country": "",
+      "contained_within": [],
+      "bounding_box": null
+    },
+    "description": "Fullstack Software Developer /🎓\nComputer engineering master student at EMU.",
+    "url": null,
+    "entities": {
+      "description": {
+        "urls": []
+      }
+    },
+    "protected": false,
+    "followers_count": 78,
+    "friends_count": 239,
+    "listed_count": 0,
+    "created_at": "Tue Apr 28 20:42:47 +0000 2015",
+    "favourites_count": 688,
+    "utc_offset": null,
+    "time_zone": null,
+    "geo_enabled": false,
+    "verified": false,
+    "statuses_count": 193,
+    "lang": null,
+    "status": {
+      "created_at": "Tue Aug 17 06:54:53 +0000 2021",
+      "id": 1427524314824421400,
+      "id_str": "1427524314824421389",
+      "text": "toplasan 5 iq etmez https://t.co/1LN0ed9KTU",
+      "truncated": false,
+      "entities": {
+        "hashtags": [],
+        "symbols": [],
+        "user_mentions": [],
+        "urls": [
+          {
+            "url": "https://t.co/1LN0ed9KTU",
+            "expanded_url": "https://twitter.com/MalikRoxk/status/1427017109607833604",
+            "display_url": "twitter.com/MalikRoxk/stat…",
+            "indices": [
+              20,
+              43
+            ]
+          }
+        ]
+      },
+      "source": "<a href=\"http://twitter.com/download/android\" rel=\"nofollow\">Twitter for Android</a>",
+      "in_reply_to_status_id": null,
+      "in_reply_to_status_id_str": null,
+      "in_reply_to_user_id": null,
+      "in_reply_to_user_id_str": null,
+      "in_reply_to_screen_name": null,
+      "geo": null,
+      "coordinates": null,
+      "place": null,
+      "contributors": null,
+      "is_quote_status": true,
+      "quoted_status_id": 1427017109607833600,
+      "quoted_status_id_str": "1427017109607833604",
+      "retweet_count": 0,
+      "favorite_count": 0,
+      "favorited": false,
+      "retweeted": false,
+      "possibly_sensitive": false,
+      "lang": "tr"
+    },
+    "contributors_enabled": false,
+    "is_translator": false,
+    "is_translation_enabled": false,
+    "profile_background_color": "C0DEED",
+    "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png",
+    "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme1/bg.png",
+    "profile_background_tile": false,
+    "profile_image_url": "http://pbs.twimg.com/profile_images/1374023119116115969/zV2Vuf5B_normal.jpg",
+    "profile_image_url_https": "https://pbs.twimg.com/profile_images/1374023119116115969/zV2Vuf5B_normal.jpg",
+    "profile_banner_url": "https://pbs.twimg.com/profile_banners/3218790124/1596297720",
+    "profile_link_color": "1DA1F2",
+    "profile_sidebar_border_color": "C0DEED",
+    "profile_sidebar_fill_color": "DDEEF6",
+    "profile_text_color": "333333",
+    "profile_use_background_image": true,
+    "has_extended_profile": false,
+    "default_profile": true,
+    "default_profile_image": false,
+    "following": null,
+    "follow_request_sent": null,
+    "notifications": null,
+    "translator_type": "none",
+    "withheld_in_countries": []
+  },
+  "createdAt": {
+    "$date": "2021-09-01T17:05:21.271Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-01T17:05:21.271Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "612fb30d6369700f9acd99ba"
+  },
+  "twitterId": "202138344",
+  "username": "fkdev",
+  "info": {
+    "id": 202138344,
+    "id_str": "202138344",
+    "name": "Ferry Koster",
+    "screen_name": "fkdev",
+    "location": "Rotterdam, Netherlands",
+    "profile_location": null,
+    "description": "I'm Ferry Koster,\r\nA (web)developer currently specialized in the scripting languages: \r\n- PHP/MySQL\r\n- (x)HTML/CSS\r\n- Javascript (jQuery)",
+    "url": "http://t.co/Qi33Vu2Y4z",
+    "entities": {
+      "url": {
+        "urls": [
+          {
+            "url": "http://t.co/Qi33Vu2Y4z",
+            "expanded_url": "http://www.fkdev.com",
+            "display_url": "fkdev.com",
+            "indices": [
+              0,
+              22
+            ]
+          }
+        ]
+      },
+      "description": {
+        "urls": []
+      }
+    },
+    "protected": false,
+    "followers_count": 10,
+    "friends_count": 3,
+    "listed_count": 0,
+    "created_at": "Wed Oct 13 11:39:01 +0000 2010",
+    "favourites_count": 0,
+    "utc_offset": null,
+    "time_zone": null,
+    "geo_enabled": false,
+    "verified": false,
+    "statuses_count": 2,
+    "lang": null,
+    "status": {
+      "created_at": "Thu Oct 28 09:17:32 +0000 2010",
+      "id": 28972258655,
+      "id_str": "28972258655",
+      "text": "New www.inglorie.nl website is finally online!",
+      "truncated": false,
+      "entities": {
+        "hashtags": [],
+        "symbols": [],
+        "user_mentions": [],
+        "urls": []
+      },
+      "source": "<a href=\"https://about.twitter.com/products/tweetdeck\" rel=\"nofollow\">TweetDeck</a>",
+      "in_reply_to_status_id": null,
+      "in_reply_to_status_id_str": null,
+      "in_reply_to_user_id": null,
+      "in_reply_to_user_id_str": null,
+      "in_reply_to_screen_name": null,
+      "geo": null,
+      "coordinates": null,
+      "place": null,
+      "contributors": null,
+      "is_quote_status": false,
+      "retweet_count": 0,
+      "favorite_count": 0,
+      "favorited": false,
+      "retweeted": false,
+      "lang": "en"
+    },
+    "contributors_enabled": false,
+    "is_translator": false,
+    "is_translation_enabled": false,
+    "profile_background_color": "C0DEED",
+    "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png",
+    "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme1/bg.png",
+    "profile_background_tile": false,
+    "profile_image_url": "http://pbs.twimg.com/profile_images/1143790594/Logo_normal.png",
+    "profile_image_url_https": "https://pbs.twimg.com/profile_images/1143790594/Logo_normal.png",
+    "profile_link_color": "1DA1F2",
+    "profile_sidebar_border_color": "C0DEED",
+    "profile_sidebar_fill_color": "DDEEF6",
+    "profile_text_color": "333333",
+    "profile_use_background_image": true,
+    "has_extended_profile": false,
+    "default_profile": true,
+    "default_profile_image": false,
+    "following": null,
+    "follow_request_sent": null,
+    "notifications": null,
+    "translator_type": "none",
+    "withheld_in_countries": []
+  },
+  "createdAt": {
+    "$date": "2021-09-01T17:06:21.914Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-01T17:06:21.914Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "612fb3126369700f9acd99bc"
+  },
+  "twitterId": "94564297",
+  "username": "zaferayan",
+  "info": {
+    "id": 94564297,
+    "id_str": "94564297",
+    "name": "Zafer Ayan",
+    "screen_name": "ZaferAyan",
+    "location": "İstanbul, Türkiye",
+    "profile_location": null,
+    "description": "🌿 Fullstack Developer 🖌 @devnot_ Author 🧪 Constant learner 🎨 Flat designer 📐Fast prototyper 🛠 Boilerplater 📻TA1AQP #Mobile #ReactNative Image: Freepik",
+    "url": "https://t.co/Q5iq8phiA9",
+    "entities": {
+      "url": {
+        "urls": [
+          {
+            "url": "https://t.co/Q5iq8phiA9",
+            "expanded_url": "https://github.com/ozcanzaferayan/",
+            "display_url": "github.com/ozcanzaferayan/",
+            "indices": [
+              0,
+              23
+            ]
+          }
+        ]
+      },
+      "description": {
+        "urls": []
+      }
+    },
+    "protected": false,
+    "followers_count": 6888,
+    "friends_count": 2240,
+    "listed_count": 70,
+    "created_at": "Fri Dec 04 14:04:00 +0000 2009",
+    "favourites_count": 9600,
+    "utc_offset": null,
+    "time_zone": null,
+    "geo_enabled": true,
+    "verified": false,
+    "statuses_count": 5454,
+    "lang": null,
+    "status": {
+      "created_at": "Wed Sep 01 15:23:56 +0000 2021",
+      "id": 1433088241700323300,
+      "id_str": "1433088241700323341",
+      "text": "@yesersin Ahaha. Game development çok ayrı bişi ya game engine ile yazılmalı kesinlikle. HTML5 falan da olmaz yani olmamalı :)",
+      "truncated": false,
+      "entities": {
+        "hashtags": [],
+        "symbols": [],
+        "user_mentions": [
+          {
+            "screen_name": "yesersin",
+            "name": "Erkan",
+            "id": 14180955,
+            "id_str": "14180955",
+            "indices": [
+              0,
+              9
+            ]
+          }
+        ],
+        "urls": []
+      },
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "in_reply_to_status_id": 1433087375836651500,
+      "in_reply_to_status_id_str": "1433087375836651526",
+      "in_reply_to_user_id": 14180955,
+      "in_reply_to_user_id_str": "14180955",
+      "in_reply_to_screen_name": "yesersin",
+      "geo": null,
+      "coordinates": null,
+      "place": null,
+      "contributors": null,
+      "is_quote_status": false,
+      "retweet_count": 0,
+      "favorite_count": 0,
+      "favorited": false,
+      "retweeted": false,
+      "lang": "tr"
+    },
+    "contributors_enabled": false,
+    "is_translator": false,
+    "is_translation_enabled": false,
+    "profile_background_color": "131516",
+    "profile_background_image_url": "http://abs.twimg.com/images/themes/theme14/bg.gif",
+    "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme14/bg.gif",
+    "profile_background_tile": true,
+    "profile_image_url": "http://pbs.twimg.com/profile_images/1349437841055641601/0k5dOKS0_normal.jpg",
+    "profile_image_url_https": "https://pbs.twimg.com/profile_images/1349437841055641601/0k5dOKS0_normal.jpg",
+    "profile_banner_url": "https://pbs.twimg.com/profile_banners/94564297/1597782255",
+    "profile_link_color": "009999",
+    "profile_sidebar_border_color": "EEEEEE",
+    "profile_sidebar_fill_color": "EFEFEF",
+    "profile_text_color": "333333",
+    "profile_use_background_image": true,
+    "has_extended_profile": true,
+    "default_profile": false,
+    "default_profile_image": false,
+    "following": null,
+    "follow_request_sent": null,
+    "notifications": null,
+    "translator_type": "regular",
+    "withheld_in_countries": []
+  },
+  "createdAt": {
+    "$date": "2021-09-01T17:06:26.056Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-01T17:06:26.056Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "612fb3166369700f9acd99be"
+  },
+  "twitterId": "776837750360305700",
+  "username": "mervenoyan",
+  "info": {
+    "id": 776837750360305700,
+    "id_str": "776837750360305666",
+    "name": "Merve Noyan",
+    "screen_name": "Mervenoyan",
+    "location": "Diyarbakır, Türkiye",
+    "profile_location": {
+      "id": "7422b4cf3a141703",
+      "url": "https://api.twitter.com/1.1/geo/id/7422b4cf3a141703.json",
+      "place_type": "unknown",
+      "name": "Diyarbakır, Türkiye",
+      "full_name": "Diyarbakır, Türkiye",
+      "country_code": "",
+      "country": "",
+      "contained_within": [],
+      "bounding_box": null
+    },
+    "description": "",
+    "url": null,
+    "entities": {
+      "description": {
+        "urls": []
+      }
+    },
+    "protected": true,
+    "followers_count": 20,
+    "friends_count": 36,
+    "listed_count": 0,
+    "created_at": "Fri Sep 16 17:38:47 +0000 2016",
+    "favourites_count": 249,
+    "utc_offset": null,
+    "time_zone": null,
+    "geo_enabled": false,
+    "verified": false,
+    "statuses_count": 5,
+    "lang": null,
+    "contributors_enabled": false,
+    "is_translator": false,
+    "is_translation_enabled": false,
+    "profile_background_color": "F5F8FA",
+    "profile_background_image_url": null,
+    "profile_background_image_url_https": null,
+    "profile_background_tile": false,
+    "profile_image_url": "http://pbs.twimg.com/profile_images/902636448347598848/HORqXgN5_normal.jpg",
+    "profile_image_url_https": "https://pbs.twimg.com/profile_images/902636448347598848/HORqXgN5_normal.jpg",
+    "profile_link_color": "1DA1F2",
+    "profile_sidebar_border_color": "C0DEED",
+    "profile_sidebar_fill_color": "DDEEF6",
+    "profile_text_color": "333333",
+    "profile_use_background_image": true,
+    "has_extended_profile": false,
+    "default_profile": true,
+    "default_profile_image": false,
+    "following": null,
+    "follow_request_sent": null,
+    "notifications": null,
+    "translator_type": "none",
+    "withheld_in_countries": []
+  },
+  "createdAt": {
+    "$date": "2021-09-01T17:06:30.770Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-01T17:06:30.770Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "612fb3496369700f9acd99c0"
+  },
+  "twitterId": "173149310",
+  "username": "chabyhan",
+  "info": {
+    "id": 173149310,
+    "id_str": "173149310",
+    "name": "çabi",
+    "screen_name": "chabyhan",
+    "location": "chaby@hypers.co",
+    "profile_location": null,
+    "description": "yeminli koreli boomer\n🇰🇷🇹🇷\nchabyhan@gmail.com",
+    "url": "https://t.co/B2Ch93L26b",
+    "entities": {
+      "url": {
+        "urls": [
+          {
+            "url": "https://t.co/B2Ch93L26b",
+            "expanded_url": "https://instagram.com/chabyhan",
+            "display_url": "instagram.com/chabyhan",
+            "indices": [
+              0,
+              23
+            ]
+          }
+        ]
+      },
+      "description": {
+        "urls": []
+      }
+    },
+    "protected": false,
+    "followers_count": 333000,
+    "friends_count": 1001,
+    "listed_count": 123,
+    "created_at": "Sat Jul 31 15:35:45 +0000 2010",
+    "favourites_count": 23822,
+    "utc_offset": null,
+    "time_zone": null,
+    "geo_enabled": true,
+    "verified": true,
+    "statuses_count": 11560,
+    "lang": null,
+    "status": {
+      "created_at": "Wed Sep 01 17:05:29 +0000 2021",
+      "id": 1433113793626783700,
+      "id_str": "1433113793626783748",
+      "text": "@fatih19549268 evet",
+      "truncated": false,
+      "entities": {
+        "hashtags": [],
+        "symbols": [],
+        "user_mentions": [
+          {
+            "screen_name": "fatih19549268",
+            "name": "fatih",
+            "id": 1244181952934150100,
+            "id_str": "1244181952934150146",
+            "indices": [
+              0,
+              14
+            ]
+          }
+        ],
+        "urls": []
+      },
+      "source": "<a href=\"http://twitter.com/download/android\" rel=\"nofollow\">Twitter for Android</a>",
+      "in_reply_to_status_id": 1433112967055241200,
+      "in_reply_to_status_id_str": "1433112967055241218",
+      "in_reply_to_user_id": 1244181952934150100,
+      "in_reply_to_user_id_str": "1244181952934150146",
+      "in_reply_to_screen_name": "fatih19549268",
+      "geo": null,
+      "coordinates": null,
+      "place": null,
+      "contributors": null,
+      "is_quote_status": false,
+      "retweet_count": 0,
+      "favorite_count": 0,
+      "favorited": false,
+      "retweeted": false,
+      "lang": "en"
+    },
+    "contributors_enabled": false,
+    "is_translator": false,
+    "is_translation_enabled": false,
+    "profile_background_color": "C0DEED",
+    "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png",
+    "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme1/bg.png",
+    "profile_background_tile": false,
+    "profile_image_url": "http://pbs.twimg.com/profile_images/1429804573582151682/XxQ7bAu9_normal.jpg",
+    "profile_image_url_https": "https://pbs.twimg.com/profile_images/1429804573582151682/XxQ7bAu9_normal.jpg",
+    "profile_banner_url": "https://pbs.twimg.com/profile_banners/173149310/1628300228",
+    "profile_link_color": "ABB8C2",
+    "profile_sidebar_border_color": "C0DEED",
+    "profile_sidebar_fill_color": "DDEEF6",
+    "profile_text_color": "333333",
+    "profile_use_background_image": true,
+    "has_extended_profile": true,
+    "default_profile": false,
+    "default_profile_image": false,
+    "following": null,
+    "follow_request_sent": null,
+    "notifications": null,
+    "translator_type": "regular",
+    "withheld_in_countries": []
+  },
+  "createdAt": {
+    "$date": "2021-09-01T17:07:21.825Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-01T17:07:21.825Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "612fb35a6369700f9acd99c2"
+  },
+  "twitterId": "3024176781",
+  "username": "AbdulkerimDrmz_",
+  "info": {
+    "id": 3024176781,
+    "id_str": "3024176781",
+    "name": "Abdülkerim Durmaz",
+    "screen_name": "AbdulkerimDrmz_",
+    "location": "",
+    "profile_location": null,
+    "description": "Fenerbahçe-Milli Takım Eski Futbolcusu.Teknik Direktör.Beyaz Tv Futbol Yorumcusu/ Reklam ve PR için:ersoymenajerlik@gmail.com",
+    "url": null,
+    "entities": {
+      "description": {
+        "urls": []
+      }
+    },
+    "protected": false,
+    "followers_count": 465869,
+    "friends_count": 88,
+    "listed_count": 292,
+    "created_at": "Sun Feb 08 00:48:43 +0000 2015",
+    "favourites_count": 13586,
+    "utc_offset": null,
+    "time_zone": null,
+    "geo_enabled": true,
+    "verified": false,
+    "statuses_count": 1318,
+    "lang": null,
+    "status": {
+      "created_at": "Tue Aug 31 21:07:24 +0000 2021",
+      "id": 1432812286285164500,
+      "id_str": "1432812286285164547",
+      "text": "Kardeşlerim ben Kim Min Jae yi çok sevdim.İçime bi his doğdu forvete de bi G.Kore li kardeş gelecek sanki.",
+      "truncated": false,
+      "entities": {
+        "hashtags": [],
+        "symbols": [],
+        "user_mentions": [],
+        "urls": []
+      },
+      "source": "<a href=\"http://twitter.com/download/android\" rel=\"nofollow\">Twitter for Android</a>",
+      "in_reply_to_status_id": null,
+      "in_reply_to_status_id_str": null,
+      "in_reply_to_user_id": null,
+      "in_reply_to_user_id_str": null,
+      "in_reply_to_screen_name": null,
+      "geo": null,
+      "coordinates": null,
+      "place": null,
+      "contributors": null,
+      "is_quote_status": false,
+      "retweet_count": 107,
+      "favorite_count": 11067,
+      "favorited": false,
+      "retweeted": false,
+      "lang": "tr"
+    },
+    "contributors_enabled": false,
+    "is_translator": false,
+    "is_translation_enabled": false,
+    "profile_background_color": "C0DEED",
+    "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png",
+    "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme1/bg.png",
+    "profile_background_tile": false,
+    "profile_image_url": "http://pbs.twimg.com/profile_images/1039639964886163458/Y9qfNDSf_normal.jpg",
+    "profile_image_url_https": "https://pbs.twimg.com/profile_images/1039639964886163458/Y9qfNDSf_normal.jpg",
+    "profile_banner_url": "https://pbs.twimg.com/profile_banners/3024176781/1470255033",
+    "profile_link_color": "1DA1F2",
+    "profile_sidebar_border_color": "C0DEED",
+    "profile_sidebar_fill_color": "DDEEF6",
+    "profile_text_color": "333333",
+    "profile_use_background_image": true,
+    "has_extended_profile": false,
+    "default_profile": true,
+    "default_profile_image": false,
+    "following": null,
+    "follow_request_sent": null,
+    "notifications": null,
+    "translator_type": "none",
+    "withheld_in_countries": []
+  },
+  "createdAt": {
+    "$date": "2021-09-01T17:07:38.533Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-01T17:07:38.533Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "612fb3656369700f9acd99c4"
+  },
+  "twitterId": "1915484676",
+  "username": "TekYolFener",
+  "info": {
+    "id": 1915484676,
+    "id_str": "1915484676",
+    "name": "Tek Yol FENER",
+    "screen_name": "TekYolFener",
+    "location": "Kadıköy, İstanbul",
+    "profile_location": {
+      "id": "685fc4103e92820b",
+      "url": "https://api.twitter.com/1.1/geo/id/685fc4103e92820b.json",
+      "place_type": "unknown",
+      "name": "Kadıköy, İstanbul",
+      "full_name": "Kadıköy, İstanbul",
+      "country_code": "",
+      "country": "",
+      "contained_within": [],
+      "bounding_box": null
+    },
+    "description": "#Fenerbahçe taraftar platformu | tekyolfenercom@yandex.com | https://t.co/c4aRofYydB",
+    "url": "https://t.co/7lEVksWJVd",
+    "entities": {
+      "url": {
+        "urls": [
+          {
+            "url": "https://t.co/7lEVksWJVd",
+            "expanded_url": "http://tekyolfener.com",
+            "display_url": "tekyolfener.com",
+            "indices": [
+              0,
+              23
+            ]
+          }
+        ]
+      },
+      "description": {
+        "urls": [
+          {
+            "url": "https://t.co/c4aRofYydB",
+            "expanded_url": "http://facebook.com/tekyoIfener",
+            "display_url": "facebook.com/tekyoIfener",
+            "indices": [
+              61,
+              84
+            ]
+          }
+        ]
+      }
+    },
+    "protected": false,
+    "followers_count": 371648,
+    "friends_count": 194760,
+    "listed_count": 314,
+    "created_at": "Sat Sep 28 22:32:38 +0000 2013",
+    "favourites_count": 60026,
+    "utc_offset": null,
+    "time_zone": null,
+    "geo_enabled": false,
+    "verified": false,
+    "statuses_count": 27629,
+    "lang": null,
+    "status": {
+      "created_at": "Wed Sep 01 17:04:37 +0000 2021",
+      "id": 1433113577909534700,
+      "id_str": "1433113577909534723",
+      "text": "@Fenerbahce Güle güle Perotti..",
+      "truncated": false,
+      "entities": {
+        "hashtags": [],
+        "symbols": [],
+        "user_mentions": [
+          {
+            "screen_name": "Fenerbahce",
+            "name": "Fenerbahçe SK",
+            "id": 11525172,
+            "id_str": "11525172",
+            "indices": [
+              0,
+              11
+            ]
+          }
+        ],
+        "urls": []
+      },
+      "source": "<a href=\"http://twitter.com/download/android\" rel=\"nofollow\">Twitter for Android</a>",
+      "in_reply_to_status_id": 1433112674628419600,
+      "in_reply_to_status_id_str": "1433112674628419586",
+      "in_reply_to_user_id": 11525172,
+      "in_reply_to_user_id_str": "11525172",
+      "in_reply_to_screen_name": "Fenerbahce",
+      "geo": null,
+      "coordinates": null,
+      "place": null,
+      "contributors": null,
+      "is_quote_status": false,
+      "retweet_count": 0,
+      "favorite_count": 133,
+      "favorited": false,
+      "retweeted": false,
+      "lang": "tr"
+    },
+    "contributors_enabled": false,
+    "is_translator": false,
+    "is_translation_enabled": false,
+    "profile_background_color": "000000",
+    "profile_background_image_url": "http://abs.twimg.com/images/themes/theme18/bg.gif",
+    "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme18/bg.gif",
+    "profile_background_tile": false,
+    "profile_image_url": "http://pbs.twimg.com/profile_images/1326222748868284416/yNv8XcqH_normal.jpg",
+    "profile_image_url_https": "https://pbs.twimg.com/profile_images/1326222748868284416/yNv8XcqH_normal.jpg",
+    "profile_banner_url": "https://pbs.twimg.com/profile_banners/1915484676/1582486221",
+    "profile_link_color": "0000FF",
+    "profile_sidebar_border_color": "000000",
+    "profile_sidebar_fill_color": "000000",
+    "profile_text_color": "000000",
+    "profile_use_background_image": false,
+    "has_extended_profile": true,
+    "default_profile": false,
+    "default_profile_image": false,
+    "following": null,
+    "follow_request_sent": null,
+    "notifications": null,
+    "translator_type": "regular",
+    "withheld_in_countries": []
+  },
+  "createdAt": {
+    "$date": "2021-09-01T17:07:49.214Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-01T17:07:49.214Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "612fb3756369700f9acd99c6"
+  },
+  "twitterId": "182821975",
+  "username": "youyuxi",
+  "info": {
+    "id": 182821975,
+    "id_str": "182821975",
+    "name": "Evan You",
+    "screen_name": "youyuxi",
+    "location": "New Jersey, USA",
+    "profile_location": null,
+    "description": "Husband, father of two, independent open source developer. Creator / project lead of @vuejs, @vite_js and connoisseur of sushi.",
+    "url": "https://t.co/J7DeiSeB7g",
+    "entities": {
+      "url": {
+        "urls": [
+          {
+            "url": "https://t.co/J7DeiSeB7g",
+            "expanded_url": "https://github.com/sponsors/yyx990803",
+            "display_url": "github.com/sponsors/yyx99…",
+            "indices": [
+              0,
+              23
+            ]
+          }
+        ]
+      },
+      "description": {
+        "urls": []
+      }
+    },
+    "protected": false,
+    "followers_count": 147734,
+    "friends_count": 1255,
+    "listed_count": 2255,
+    "created_at": "Wed Aug 25 13:45:01 +0000 2010",
+    "favourites_count": 5244,
+    "utc_offset": null,
+    "time_zone": null,
+    "geo_enabled": true,
+    "verified": false,
+    "statuses_count": 7472,
+    "lang": null,
+    "status": {
+      "created_at": "Wed Sep 01 17:07:50 +0000 2021",
+      "id": 1433114385841594400,
+      "id_str": "1433114385841594373",
+      "text": "@CptAwesomeDi @isukkaw It's missing Pony Ma 😂",
+      "truncated": false,
+      "entities": {
+        "hashtags": [],
+        "symbols": [],
+        "user_mentions": [
+          {
+            "screen_name": "CptAwesomeDi",
+            "name": "Di is an Essentialist 😎",
+            "id": 85134199,
+            "id_str": "85134199",
+            "indices": [
+              0,
+              13
+            ]
+          },
+          {
+            "screen_name": "isukkaw",
+            "name": "Sukka / 毛绒绒的大尾巴🦊",
+            "id": 1013015120178319400,
+            "id_str": "1013015120178319361",
+            "indices": [
+              14,
+              22
+            ]
+          }
+        ],
+        "urls": []
+      },
+      "source": "<a href=\"http://twitter.com/download/android\" rel=\"nofollow\">Twitter for Android</a>",
+      "in_reply_to_status_id": 1433104855359365000,
+      "in_reply_to_status_id_str": "1433104855359365125",
+      "in_reply_to_user_id": 85134199,
+      "in_reply_to_user_id_str": "85134199",
+      "in_reply_to_screen_name": "CptAwesomeDi",
+      "geo": null,
+      "coordinates": null,
+      "place": null,
+      "contributors": null,
+      "is_quote_status": false,
+      "retweet_count": 0,
+      "favorite_count": 0,
+      "favorited": false,
+      "retweeted": false,
+      "lang": "en"
+    },
+    "contributors_enabled": false,
+    "is_translator": false,
+    "is_translation_enabled": false,
+    "profile_background_color": "C0DEED",
+    "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png",
+    "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme1/bg.png",
+    "profile_background_tile": true,
+    "profile_image_url": "http://pbs.twimg.com/profile_images/1206997998900850688/cTXTQiHm_normal.jpg",
+    "profile_image_url_https": "https://pbs.twimg.com/profile_images/1206997998900850688/cTXTQiHm_normal.jpg",
+    "profile_banner_url": "https://pbs.twimg.com/profile_banners/182821975/1576606001",
+    "profile_link_color": "2C3E50",
+    "profile_sidebar_border_color": "FFFFFF",
+    "profile_sidebar_fill_color": "DDEEF6",
+    "profile_text_color": "333333",
+    "profile_use_background_image": true,
+    "has_extended_profile": true,
+    "default_profile": false,
+    "default_profile_image": false,
+    "following": null,
+    "follow_request_sent": null,
+    "notifications": null,
+    "translator_type": "none",
+    "withheld_in_countries": []
+  },
+  "createdAt": {
+    "$date": "2021-09-01T17:08:05.940Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-01T17:08:05.940Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61307b4a8cc68e08795eea78"
+  },
+  "twitterId": "3218790124",
+  "username": "Ledmangos",
+  "info": {
+    "id": 3218790124,
+    "id_str": "3218790124",
+    "name": "Fırat",
+    "screen_name": "Ledmangos",
+    "location": "Ankara, Türkiye",
+    "profile_location": {
+      "id": "3d0271e51a6f4ff5",
+      "url": "https://api.twitter.com/1.1/geo/id/3d0271e51a6f4ff5.json",
+      "place_type": "unknown",
+      "name": "Ankara, Türkiye",
+      "full_name": "Ankara, Türkiye",
+      "country_code": "",
+      "country": "",
+      "contained_within": [],
+      "bounding_box": null
+    },
+    "description": "Fullstack Software Developer /🎓\nComputer engineering master student at EMU.",
+    "url": null,
+    "entities": {
+      "description": {
+        "urls": []
+      }
+    },
+    "protected": false,
+    "followers_count": 78,
+    "friends_count": 239,
+    "listed_count": 0,
+    "created_at": "Tue Apr 28 20:42:47 +0000 2015",
+    "favourites_count": 688,
+    "utc_offset": null,
+    "time_zone": null,
+    "geo_enabled": false,
+    "verified": false,
+    "statuses_count": 193,
+    "lang": null,
+    "status": {
+      "created_at": "Tue Aug 17 06:54:53 +0000 2021",
+      "id": 1427524314824421400,
+      "id_str": "1427524314824421389",
+      "text": "toplasan 5 iq etmez https://t.co/1LN0ed9KTU",
+      "truncated": false,
+      "entities": {
+        "hashtags": [],
+        "symbols": [],
+        "user_mentions": [],
+        "urls": [
+          {
+            "url": "https://t.co/1LN0ed9KTU",
+            "expanded_url": "https://twitter.com/MalikRoxk/status/1427017109607833604",
+            "display_url": "twitter.com/MalikRoxk/stat…",
+            "indices": [
+              20,
+              43
+            ]
+          }
+        ]
+      },
+      "source": "<a href=\"http://twitter.com/download/android\" rel=\"nofollow\">Twitter for Android</a>",
+      "in_reply_to_status_id": null,
+      "in_reply_to_status_id_str": null,
+      "in_reply_to_user_id": null,
+      "in_reply_to_user_id_str": null,
+      "in_reply_to_screen_name": null,
+      "geo": null,
+      "coordinates": null,
+      "place": null,
+      "contributors": null,
+      "is_quote_status": true,
+      "quoted_status_id": 1427017109607833600,
+      "quoted_status_id_str": "1427017109607833604",
+      "retweet_count": 0,
+      "favorite_count": 0,
+      "favorited": false,
+      "retweeted": false,
+      "possibly_sensitive": false,
+      "lang": "tr"
+    },
+    "contributors_enabled": false,
+    "is_translator": false,
+    "is_translation_enabled": false,
+    "profile_background_color": "C0DEED",
+    "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png",
+    "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme1/bg.png",
+    "profile_background_tile": false,
+    "profile_image_url": "http://pbs.twimg.com/profile_images/1374023119116115969/zV2Vuf5B_normal.jpg",
+    "profile_image_url_https": "https://pbs.twimg.com/profile_images/1374023119116115969/zV2Vuf5B_normal.jpg",
+    "profile_banner_url": "https://pbs.twimg.com/profile_banners/3218790124/1596297720",
+    "profile_link_color": "1DA1F2",
+    "profile_sidebar_border_color": "C0DEED",
+    "profile_sidebar_fill_color": "DDEEF6",
+    "profile_text_color": "333333",
+    "profile_use_background_image": true,
+    "has_extended_profile": false,
+    "default_profile": true,
+    "default_profile_image": false,
+    "following": null,
+    "follow_request_sent": null,
+    "notifications": null,
+    "translator_type": "none",
+    "withheld_in_countries": []
+  },
+  "createdAt": {
+    "$date": "2021-09-02T07:20:42.197Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-02T07:20:42.197Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6130938ce5fc37046d6ce89e"
+  },
+  "twitterId": "3218648806",
+  "username": "Necati_Berk",
+  "info": {
+    "id": 3218648806,
+    "id_str": "3218648806",
+    "name": "Necati Berk Çelik",
+    "screen_name": "Necati_Berk",
+    "location": "Ankara, Türkiye",
+    "profile_location": null,
+    "description": "",
+    "url": null,
+    "entities": {
+      "description": {
+        "urls": []
+      }
+    },
+    "protected": false,
+    "followers_count": 200,
+    "friends_count": 304,
+    "listed_count": 2,
+    "created_at": "Tue Apr 28 20:04:18 +0000 2015",
+    "favourites_count": 8062,
+    "utc_offset": null,
+    "time_zone": null,
+    "geo_enabled": true,
+    "verified": false,
+    "statuses_count": 449,
+    "lang": null,
+    "status": {
+      "created_at": "Mon Aug 30 07:36:13 +0000 2021",
+      "id": 1432245757894185000,
+      "id_str": "1432245757894184960",
+      "text": "RT @debuluj: iyi ki. https://t.co/RzCtdOSfBX",
+      "truncated": false,
+      "entities": {
+        "hashtags": [],
+        "symbols": [],
+        "user_mentions": [
+          {
+            "screen_name": "debuluj",
+            "name": "emre buluj",
+            "id": 1092104311566405600,
+            "id_str": "1092104311566405634",
+            "indices": [
+              3,
+              11
+            ]
+          }
+        ],
+        "urls": [],
+        "media": [
+          {
+            "id": 1432089403225161700,
+            "id_str": "1432089403225161729",
+            "indices": [
+              21,
+              44
+            ],
+            "media_url": "http://pbs.twimg.com/media/E9_NuYXWQAEzaj0.jpg",
+            "media_url_https": "https://pbs.twimg.com/media/E9_NuYXWQAEzaj0.jpg",
+            "url": "https://t.co/RzCtdOSfBX",
+            "display_url": "pic.twitter.com/RzCtdOSfBX",
+            "expanded_url": "https://twitter.com/debuluj/status/1432089409827053572/photo/1",
+            "type": "photo",
+            "sizes": {
+              "large": {
+                "w": 828,
+                "h": 1023,
+                "resize": "fit"
+              },
+              "thumb": {
+                "w": 150,
+                "h": 150,
+                "resize": "crop"
+              },
+              "small": {
+                "w": 550,
+                "h": 680,
+                "resize": "fit"
+              },
+              "medium": {
+                "w": 828,
+                "h": 1023,
+                "resize": "fit"
+              }
+            },
+            "source_status_id": 1432089409827053600,
+            "source_status_id_str": "1432089409827053572",
+            "source_user_id": 1092104311566405600,
+            "source_user_id_str": "1092104311566405634"
+          }
+        ]
+      },
+      "extended_entities": {
+        "media": [
+          {
+            "id": 1432089403225161700,
+            "id_str": "1432089403225161729",
+            "indices": [
+              21,
+              44
+            ],
+            "media_url": "http://pbs.twimg.com/media/E9_NuYXWQAEzaj0.jpg",
+            "media_url_https": "https://pbs.twimg.com/media/E9_NuYXWQAEzaj0.jpg",
+            "url": "https://t.co/RzCtdOSfBX",
+            "display_url": "pic.twitter.com/RzCtdOSfBX",
+            "expanded_url": "https://twitter.com/debuluj/status/1432089409827053572/photo/1",
+            "type": "photo",
+            "sizes": {
+              "large": {
+                "w": 828,
+                "h": 1023,
+                "resize": "fit"
+              },
+              "thumb": {
+                "w": 150,
+                "h": 150,
+                "resize": "crop"
+              },
+              "small": {
+                "w": 550,
+                "h": 680,
+                "resize": "fit"
+              },
+              "medium": {
+                "w": 828,
+                "h": 1023,
+                "resize": "fit"
+              }
+            },
+            "source_status_id": 1432089409827053600,
+            "source_status_id_str": "1432089409827053572",
+            "source_user_id": 1092104311566405600,
+            "source_user_id_str": "1092104311566405634"
+          }
+        ]
+      },
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "in_reply_to_status_id": null,
+      "in_reply_to_status_id_str": null,
+      "in_reply_to_user_id": null,
+      "in_reply_to_user_id_str": null,
+      "in_reply_to_screen_name": null,
+      "geo": null,
+      "coordinates": null,
+      "place": null,
+      "contributors": null,
+      "retweeted_status": {
+        "created_at": "Sun Aug 29 21:14:56 +0000 2021",
+        "id": 1432089409827053600,
+        "id_str": "1432089409827053572",
+        "text": "iyi ki. https://t.co/RzCtdOSfBX",
+        "truncated": false,
+        "entities": {
+          "hashtags": [],
+          "symbols": [],
+          "user_mentions": [],
+          "urls": [],
+          "media": [
+            {
+              "id": 1432089403225161700,
+              "id_str": "1432089403225161729",
+              "indices": [
+                8,
+                31
+              ],
+              "media_url": "http://pbs.twimg.com/media/E9_NuYXWQAEzaj0.jpg",
+              "media_url_https": "https://pbs.twimg.com/media/E9_NuYXWQAEzaj0.jpg",
+              "url": "https://t.co/RzCtdOSfBX",
+              "display_url": "pic.twitter.com/RzCtdOSfBX",
+              "expanded_url": "https://twitter.com/debuluj/status/1432089409827053572/photo/1",
+              "type": "photo",
+              "sizes": {
+                "large": {
+                  "w": 828,
+                  "h": 1023,
+                  "resize": "fit"
+                },
+                "thumb": {
+                  "w": 150,
+                  "h": 150,
+                  "resize": "crop"
+                },
+                "small": {
+                  "w": 550,
+                  "h": 680,
+                  "resize": "fit"
+                },
+                "medium": {
+                  "w": 828,
+                  "h": 1023,
+                  "resize": "fit"
+                }
+              }
+            }
+          ]
+        },
+        "extended_entities": {
+          "media": [
+            {
+              "id": 1432089403225161700,
+              "id_str": "1432089403225161729",
+              "indices": [
+                8,
+                31
+              ],
+              "media_url": "http://pbs.twimg.com/media/E9_NuYXWQAEzaj0.jpg",
+              "media_url_https": "https://pbs.twimg.com/media/E9_NuYXWQAEzaj0.jpg",
+              "url": "https://t.co/RzCtdOSfBX",
+              "display_url": "pic.twitter.com/RzCtdOSfBX",
+              "expanded_url": "https://twitter.com/debuluj/status/1432089409827053572/photo/1",
+              "type": "photo",
+              "sizes": {
+                "large": {
+                  "w": 828,
+                  "h": 1023,
+                  "resize": "fit"
+                },
+                "thumb": {
+                  "w": 150,
+                  "h": 150,
+                  "resize": "crop"
+                },
+                "small": {
+                  "w": 550,
+                  "h": 680,
+                  "resize": "fit"
+                },
+                "medium": {
+                  "w": 828,
+                  "h": 1023,
+                  "resize": "fit"
+                }
+              }
+            }
+          ]
+        },
+        "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "geo": null,
+        "coordinates": null,
+        "place": null,
+        "contributors": null,
+        "is_quote_status": false,
+        "retweet_count": 1378,
+        "favorite_count": 25304,
+        "favorited": false,
+        "retweeted": false,
+        "possibly_sensitive": false,
+        "lang": "tr"
+      },
+      "is_quote_status": false,
+      "retweet_count": 1378,
+      "favorite_count": 0,
+      "favorited": false,
+      "retweeted": false,
+      "possibly_sensitive": false,
+      "lang": "tr"
+    },
+    "contributors_enabled": false,
+    "is_translator": false,
+    "is_translation_enabled": false,
+    "profile_background_color": "000000",
+    "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png",
+    "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme1/bg.png",
+    "profile_background_tile": true,
+    "profile_image_url": "http://pbs.twimg.com/profile_images/1408875385245274116/RiBn1CRD_normal.jpg",
+    "profile_image_url_https": "https://pbs.twimg.com/profile_images/1408875385245274116/RiBn1CRD_normal.jpg",
+    "profile_banner_url": "https://pbs.twimg.com/profile_banners/3218648806/1531402077",
+    "profile_link_color": "920404",
+    "profile_sidebar_border_color": "000000",
+    "profile_sidebar_fill_color": "000000",
+    "profile_text_color": "000000",
+    "profile_use_background_image": true,
+    "has_extended_profile": true,
+    "default_profile": false,
+    "default_profile_image": false,
+    "following": null,
+    "follow_request_sent": null,
+    "notifications": null,
+    "translator_type": "none",
+    "withheld_in_countries": []
+  },
+  "createdAt": {
+    "$date": "2021-09-02T09:04:12.777Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-02T09:04:12.777Z"
+  },
+  "__v": 0
+}]
