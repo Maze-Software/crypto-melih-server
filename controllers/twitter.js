@@ -103,6 +103,7 @@ const getTwitterFeed = async (req, res) => {
     const getUser = await checkLogin(req);
     if (!getUser) { return new errorHandler(res, 401, -1) }
     const userId = getUser._id
+
     const getFollowings = await TwitterFollows.find({ userId }).lean();
 
     const getFeedUsers = await TwitterUser.find({ username: { $in: getFollowings.map(e => e.username) } })

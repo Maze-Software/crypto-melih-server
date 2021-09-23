@@ -25,7 +25,7 @@ const checkLogin = async (req) => {
 
         if (token) {
             var result = jwt.verify(token, config.privateKey);
-            const user = await User.findOne({ userName: result.userName })
+            const user = await User.findById(result.userId)
 
             if (user) {
                 return user;
