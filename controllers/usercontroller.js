@@ -382,6 +382,7 @@ const forgetPassword = async (req, res) => {
 
 
     const user = await User.findOne({ email: email });
+    if (!user) return res.status(500).send("kullanıcı bulunamadı")
     await user.updateOne({ hash: bcrypt.hashSync(newPassword, 12) })
 
     if (user) {
