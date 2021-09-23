@@ -130,7 +130,7 @@ const getTwitterFeed = async (req, res) => {
         }
     }
 
-    res.send({ tweetList: tweetList.flat().sort(() => Math.random() - 0.5) })
+    res.send({ tweetList: tweetList.reduce((acc, val) => acc.concat(val), []).sort(() => Math.random() - 0.5) })
 
 
 
