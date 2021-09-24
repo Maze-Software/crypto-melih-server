@@ -7,6 +7,7 @@ const config = require('../config.json');
 var jwt = require('jsonwebtoken');
 const TwitterUser = require('../schemas/twitterusers')
 const TwitterFollows = require('../schemas/twitterfollowings')
+const PushTokens = require('../schemas/pushtokens')
 
 function generateReferralCode(length) {
     var result = '';
@@ -179,9 +180,11 @@ const refreshToken = async (req, res) => {
         if (token) {
             var result = jwt.verify(token, config.privateKey);
             const user = await User.findOne({ email: result.email })
+            const { pushToken = "none" } = req.body
 
 
             if (user) {
+                await pushTokenHandler(user._id, pushToken)
                 res.cookie('token', token);
                 res.status(200).send({ user: user })
             }
@@ -198,6 +201,19 @@ const refreshToken = async (req, res) => {
     }
 
 }
+const pushTokenHandler = async (userId, pushToken) => {
+    if (pushToken == "none" || !pushToken) return
+    const existToken = await PushTokens.exists({ userId: userId })
+    if (existToken) {
+        // update
+        await PushTokens.findOneAndUpdate({ userId: userId, }, { pushToken: pushToken });
+    }
+    else {
+        // create
+        await new PushTokens({ userId: userId, pushToken: pushToken }).save();
+    }
+
+}
 const login = async (req, res) => {
 
 
@@ -208,6 +224,8 @@ const login = async (req, res) => {
             const comparePassword = await bcrypt.compare(password, userByEmail.hash)
             const token = createJWT(email, userByEmail._id);
             if (comparePassword) {
+                const { pushToken = "none" } = req.body
+                await pushTokenHandler(userByEmail._id, pushToken)
                 res.cookie('token', token); // set token to the cookie
                 res.status(200).send({ token: token, user: userByEmail })
             }

@@ -1,5 +1,5 @@
 const Alarm = require('../schemas/cryptoalarm')
-const { checkMissingParams, checkLogin } = require('./general');
+const { checkMissingParams, checkLogin, sendPushNotification } = require('./general');
 const errorHandler = require('./errorhandler');
 const Axios = require('axios').default
 
@@ -67,12 +67,21 @@ const alarmHandler = async () => {
     };
     const getAlarm = await Alarm.find(query)
 
-    // TODO : send notification
-    if (getAlarm.length > 0)
-        console.log(getAlarm.map(e => e.userId), "Alarmlar Gönderildi")
+    if (getAlarm.length > 0) {
+        for await (const alarm of getAlarm) {
+            await sendPushNotification(alarm.userId, {
+                title: `${alarm.currency.toUpperCase()} ${alarm.lowerBound ? alarm.lowerBound : alarm.upperBound} Alarmı`,
+                body: `Tetiklenen alarm ${alarm.currency.toUpperCase()} ${alarm.lowerBound ? alarm.lowerBound : alarm.upperBound} seviyesinin ${alarm.lowerBound ? "altına indi" : "üstüne çıktı"}`,
+                message: `Tetiklenen alarm ${alarm.currency.toUpperCase()} ${alarm.lowerBound ? alarm.lowerBound : alarm.upperBound} seviyesinin ${alarm.lowerBound ? "altına indi" : "üstüne çıktı"}`
+
+            })
+        }
+        await Alarm.deleteMany(query)
+    }
+    // console.log(getAlarm.map(e => e.userId), "Alarmlar Gönderildi")}
 
     // Remove Alarms
-    await Alarm.deleteMany(query)
+
 
 
 }

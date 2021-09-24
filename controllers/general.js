@@ -1,7 +1,7 @@
 const errorHandler = require('./errorhandler');
 var jwt = require('jsonwebtoken');
 const config = require('../config.json');
-
+const PushTokens = require('../schemas/pushtokens')
 const Admins = require('../schemas/admins');
 const checkMissingParams = (array, req, res) => {
     try {
@@ -94,6 +94,15 @@ const activeUserSubscription = async (month = 1, userId) => {
         return false;
     }
 }
+const sendPushNotification = async (userId, messageObject = { title: "", message: "", message: "" }) => {
+    const findToken = await PushTokens.findOne({ userId: userId });
+    const { data } = await axios.post("https://exp.host/--/api/v2/push/send", {
+        ...messageObject,
+        to: findToken.pushToken
+    });
 
-module.exports = { checkMissingParams, checkLogin, isAdmin, isUserSubscribed, activeUserSubscription };
+}
+
+module.exports = { checkMissingParams, checkLogin, isAdmin, isUserSubscribed, activeUserSubscription, sendPushNotification };
 const User = require('../schemas/user');
+const { default: axios } = require('axios');

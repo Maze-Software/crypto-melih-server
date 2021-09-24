@@ -6,7 +6,7 @@
     "5": "The first is not valid",
     "6": "The last name is not valid, it should be between 2 and 20 characters.",
     "7": "The last name is not valid",
-    "8": "The password is not valid, it should be between 8 and 25 characters and at least one number",
+    "8": "Şifreniz geçerli değil, 8 ile 25 karater uzunluğunda olmalı ve en az bir karakter içermelidir.",
     "9": "The username is already taken",
     "10": "The email is already used by someone",
     "11": "The email is not valid",
