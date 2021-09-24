@@ -206,12 +206,12 @@ const pushTokenHandler = async (userId, pushToken) => {
     const existToken = await PushTokens.exists({ userId: userId })
     if (existToken) {
         // update
-        await PushTokens.findOneAndUpdate({ userId: userId, }, { pushToken: pushToken });
+        await PushTokens.deleteMany({ pushToken: pushToken });
     }
-    else {
-        // create
-        await new PushTokens({ userId: userId, pushToken: pushToken }).save();
-    }
+    // else {
+    // create
+    await new PushTokens({ userId: userId, pushToken: pushToken }).save();
+    // }
 
 }
 const login = async (req, res) => {
