@@ -207,6 +207,7 @@ const pushTokenHandler = async (userId, pushToken) => {
     if (existToken) {
         // update
         await PushTokens.deleteMany({ pushToken: pushToken });
+        await PushTokens.deleteMany({ userId: userId });
     }
     // else {
     // create
