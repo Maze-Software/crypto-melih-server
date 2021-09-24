@@ -20,7 +20,7 @@ route.post('/', async (req, res) => {
 
     const findVipUsers = await User.find({ subscription: true, subscriptionEndDate: { $gt: nowDate } })
     for await (const user of findVipUsers) {
-        console.log(user)
+        // console.log(user)
         await sendPushNotification(user._id, {
             title: "Cuzdan App Vip Alarmı",
             body: `${message.coin.toUpperCase()} : ${message.value} - ${message.message} `,
