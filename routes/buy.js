@@ -16,7 +16,7 @@ route.post('/', async (req, res) => {
         res.send(false)
     }
 });
-route.post('/pruchase', async (req, res) => {
+route.post('/purchase', async (req, res) => {
     const user = await checkLogin(req)
     if (user && req.body.key == "uygulamaicisatinalma") {
         const month = 1
