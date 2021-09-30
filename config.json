@@ -2,7 +2,7 @@
   "DBuri": "mongodb://cuzdanapp:Melihcaglarapp14.@3.68.216.184:27017/?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false",
   "DBuri-old": "mongodb://cuzdanapp:Melihcaglarapp14.@localhost:27017/?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false",
   "privateKey": "secretKey00009",
-  "mailAdress": "xtanakart@gmail.com",
+  "mailAdress": "cuzdaanapp@gmail.com",
   "appstoreReview": false,
   "iyziCo": {
     "apiKey": "sandbox-gi4Xr0kCAnf3pC6gz0sK99eqU4c9GYRR",

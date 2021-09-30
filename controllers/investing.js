@@ -47,13 +47,16 @@ const getTotalInvesting = async (req, res) => {
 
     const getUser = await checkLogin(req);
     if (!getUser) { return new errorHandler(res, 401, -1) }
-    const getAllInvestings = await Investing.find({ userId: getUser._id, }).lean()
-    // const totalAmount = getAllInvestings.reduce((accumulator, item) => accumulator + item.amount, 0);
-    const totalPrice = getAllInvestings.reduce((accumulator, item) => accumulator + item.price, 0);
+    let getAllInvestings = await Investing.find({ userId: getUser._id, }).lean()
+    getAllInvestings = getAllInvestings.map(e => {
+        const rate = global.exchangeRate.rates[e.currency.toUpperCase()]
+        return new Object({ ...e, basePrice: e.price / rate })
+    })
+    const totalPrice = getAllInvestings.reduce((accumulator, item) => accumulator + item.basePrice, 0);
     const investings = getAllInvestings.map((item) => {
         return new Object({
             ...item,
-            percentage: 100 * item.price / totalPrice
+            percentage: 100 * item.basePrice / totalPrice
         })
     })
 
