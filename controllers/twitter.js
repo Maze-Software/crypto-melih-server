@@ -66,15 +66,27 @@ const test = async (req, res) => {
 const getTwitterUser = async (req, res) => {
     if (await !isAdmin(req)) { return new errorHandler(res, 401, -1) }
 
-    res.status(200).send({ data: await TwitterUser.find() })
+    res.status(200).send({ data: await TwitterUser.find({ fixed: true }) })
 }
 
 const addTwitterUser = async (req, res) => {
     if (await !isAdmin(req)) { return new errorHandler(res, 401, -1) }
     const { username } = req.body;
-    const addTwitterUser = await TwitterUser({
-        username: username,
-    }).save();
+    let addTwitterUser = {}
+    if (!await TwitterUser.exists({ username })) {
+        const getUserTwitter = await getTwitterProfile(username);
+        addTwitterUser = await new TwitterUser({
+            twitterId: getUserTwitter.id,
+            username: username,
+            info: getUserTwitter,
+            fixed: true
+        }).save();
+    }
+    else {
+        addTwitterUser = await new TwitterUser({ username: username })
+    }
+
+
 
     const getUsers = User.find({});
 
@@ -89,11 +101,12 @@ const addTwitterUser = async (req, res) => {
 const deleteTwitterUser = async (req, res) => {
     if (await !isAdmin(req)) { return new errorHandler(res, 401, -1) }
     const { id } = req.body;
+    const getTwitterUser = await TwitterUser.findById(id)
     await TwitterUser.findByIdAndDelete(id)
     const getUsers = User.find({});
 
     for await (const user of getUsers.map(e => e)) {
-        await TwitterFollows.deleteMany({ username: username, userId: user._id })
+        await TwitterFollows.deleteMany({ username: getTwitterUser.username, userId: user._id })
     }
 
     res.status(200).send({ message: "deleted" })
@@ -110,11 +123,11 @@ const getTwitterFeed = async (req, res) => {
 
 
 
-
-    const tweetList = [];
+    let tweetList = [];
     const users = [];
 
     for await (const user of getFeedUsers) {
+
         const twitterdata = await getTweetOfUser(user.twitterId)
         if (twitterdata.data)
             tweetList.push(twitterdata.data.map(e => new Object({ user: user, tweet: e })))
@@ -129,8 +142,14 @@ const getTwitterFeed = async (req, res) => {
             array[j] = temp;
         }
     }
+    tweetList = tweetList.reduce((acc, val) => acc.concat(val), [])
 
-    res.send({ tweetList: tweetList.reduce((acc, val) => acc.concat(val), []).sort(() => Math.random() - 0.5) })
+    tweetList = tweetList.sort((firsttweet, secondtweet) => {
+        return firsttweet.tweet.created_at > secondtweet.tweet.created_at ? -1 : 1
+
+    })
+    // .sort(() => Math.random() - 0.5)
+    res.send({ tweetList: tweetList })
 
 
 

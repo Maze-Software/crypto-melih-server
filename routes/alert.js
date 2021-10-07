@@ -3,10 +3,15 @@ const express = require('express');
 const mongoose = require('mongoose');
 const route = express.Router();
 const VipAlarms = require('../schemas/tradebotalarms');
+const DeletedVipAlerts = require('../schemas/deletedvipalerts');
 const User = require('../schemas/user');
-const { sendPushNotification } = require('../controllers/general')
+const { sendPushNotification, checkLogin } = require('../controllers/general')
 route.get('/', async (req, res) => {
-    const getAlarms = await VipAlarms.find({}).sort({ createdAt: -1 })
+    const getUser = await checkLogin(req);
+    if (!getUser) { return res.status(500).send("false") }
+    const getDeletedAlarms = await DeletedVipAlerts.find({ userId: getUser._id }).lean()
+    const deletedIds = getDeletedAlarms.map(e => e.alertId)
+    const getAlarms = await VipAlarms.find({ _id: { $nin: deletedIds } }).sort({ createdAt: -1 })
     res.send({ alarms: getAlarms })
 
 });
@@ -29,6 +34,33 @@ route.post('/', async (req, res) => {
     }
     const addAlarm = await new VipAlarms({ ...message }).save();
     res.send("ok")
+});
+route.post('/delete', async (req, res) => {
+    try {
+        const getUser = await checkLogin(req);
+        if (!getUser) { return res.status(500).send("false") }
+        const { alertId } = req.body;
+        const findAlert = await VipAlarms.exists({ _id: alertId })
+        if (findAlert) {
+            if (!await DeletedVipAlerts.exists({
+                userId: getUser._id,
+                alertId: alertId
+            })) {
+
+                const newDeletedAlarms = await new DeletedVipAlerts({
+                    userId: getUser._id,
+                    alertId: alertId
+                }).save();
+            }
+            res.send("ok")
+        }
+        else {
+            res.status(500).send("false")
+        }
+    }
+    catch (e) {
+        res.status(500).send("false")
+    }
 });
 
 module.exports = route;

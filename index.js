@@ -8,10 +8,12 @@ var jwt = require("jsonwebtoken");
 var cookieParser = require("cookie-parser");
 var bodyParser = require("body-parser");
 const server = require("http").Server(app);
+const axios = require("axios");
 app.use(cookieParser());
 connectDB();
 app.use(express.json({ extended: false }));
 app.use(bodyParser.urlencoded({ extended: false }));
+
 const { alarmHandler } = require("./controllers/alarm")
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -34,6 +36,8 @@ app.use((req, res, next) => {
 
 global.SOCKET_STATE = null; // diğer dosyalardan socket'e ulaşmak için
 global.socketUsers = [];
+global.exchangeRate = null;
+
 
 app.use(express.static('./'))
 app.use("/api/auth", require("./routes/auth"));
@@ -134,6 +138,15 @@ app.get("/", function (req, res) {
 var cron = require('node-cron');
 cron.schedule('*/10 * * * * *', () => {
   alarmHandler();
+});
+
+cron.schedule('*/10 * * * * *', () => {
+  alarmHandler();
+});
+
+axios.get("https://api.exchangerate.host/latest?base=USD").then(data => global.exchangeRate = data.data)
+cron.schedule('*/30 * * * *', () => {
+  axios.get("https://api.exchangerate.host/latest?base=USD").then(data => global.exchangeRate = data.data)
 });
 
 server.listen(Port, () => console.log("Server started"));

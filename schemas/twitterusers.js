@@ -7,6 +7,7 @@ const schema = new Schema({
     twitterId: { type: String, required: false },
     username: { type: String, required: true },
     info: { type: Object, required: false },
+    fixed: { type: Boolean, required: false, default: false },
 }, { timestamps: true });
 
 schema.set('toJSON', { virtuals: true });

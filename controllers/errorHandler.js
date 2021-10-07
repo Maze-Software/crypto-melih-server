@@ -14,6 +14,9 @@ module.exports = class ErrorHandler {
     constructor(res, status, code, extradata = null) {
         this.message = {};
         this.message.code = code;
+        if (code == -1) {
+            res.clearCookie("token");
+        }
         this.message.status = status;
         if (extradata) { this.message = { ...this.message, ...extradata } }
         res.status(status).send(this.codeHandler(code));
