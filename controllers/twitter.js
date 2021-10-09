@@ -111,10 +111,45 @@ const deleteTwitterUser = async (req, res) => {
 
     res.status(200).send({ message: "deleted" })
 }
+
+const getTwitterFeedWithoutAuth = async (req, res) => {
+
+
+
+    const getFeedUsers = await TwitterUser.find({ fixed: true })
+
+
+
+    let tweetList = [];
+    const users = [];
+
+    for await (const user of getFeedUsers) {
+
+        const twitterdata = await getTweetOfUser(user.twitterId)
+        if (twitterdata.data)
+            tweetList.push(twitterdata.data.map(e => new Object({ user: user, tweet: e })))
+    }
+
+
+    tweetList = tweetList.reduce((acc, val) => acc.concat(val), [])
+
+    tweetList = tweetList.sort((firsttweet, secondtweet) => {
+        return firsttweet.tweet.created_at > secondtweet.tweet.created_at ? -1 : 1
+
+    })
+    // .sort(() => Math.random() - 0.5)
+    res.send({ tweetList: tweetList })
+
+
+
+
+
+}
+
 const getTwitterFeed = async (req, res) => {
 
     const getUser = await checkLogin(req);
-    if (!getUser) { return new errorHandler(res, 401, -1) }
+    if (!getUser) { return getTwitterFeedWithoutAuth(req, res) }
     const userId = getUser._id
 
     const getFollowings = await TwitterFollows.find({ userId }).lean();

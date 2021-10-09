@@ -56,7 +56,7 @@ const getTotalInvesting = async (req, res) => {
     const investings = getAllInvestings.map((item) => {
         return new Object({
             ...item,
-            percentage: 100 * item.basePrice / totalPrice
+            percentage: 100 * item.basePrice * item.amount / totalPrice
         })
     })
 
