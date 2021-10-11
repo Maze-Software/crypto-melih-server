@@ -377,11 +377,15 @@ const sendMail = async (req, res) => {
 }
 
 const forgetPassword = async (req, res) => {
-    const { email } = req.body;
+    let { email } = req.body;
     const newPassword = generateRandomPassword(10);
 
 
-    const user = await User.findOne({ email: email });
+    let user = await User.findOne({ email: email });
+    if (!user) user = await User.findOne({ username: email })
+    if (user) {
+        email = user.email
+    }
     if (!user) return res.status(500).send("kullanıcı bulunamadı")
     await user.updateOne({ hash: bcrypt.hashSync(newPassword, 12) })
 

@@ -136,7 +136,7 @@ const registerUser = async (req, res) => {
                 }
             }
 
-            const getTwitterUsers = TwitterUser.find({})
+            const getTwitterUsers = TwitterUser.find({ fixed: true })
             for await (const twitterUser of getTwitterUsers.map(e => e)) {
                 await new TwitterFollows({ username: twitterUser.username, userId: newUser._id }).save();
             }
