@@ -16,6 +16,7 @@ const userSchema = new Schema({
     promotionEmail: { type: Boolean, required: false, default: true },
     referralCode: { type: String, required: false, default: "none" },
     profilePicture: { type: String, required: false, default: "" },
+    latestRefCodeOwner: { type: String, required: false, default: "" },
 }, { timestamps: true });
 
 

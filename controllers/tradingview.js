@@ -64,6 +64,8 @@ const getApplications = async (req, res) => {
   let index = 0;
   for await (const row of applications.map(e => e)) {
     applications[index].user = await User.findById(row.userId);
+    console.log(applications[index].user.latestRefCodeOwner)
+    applications[index].refUser = applications[index].user.latestRefCodeOwner ? await User.findById(applications[index].user.latestRefCodeOwner) : ""
     index++
   }
   return res.send({ data: applications })

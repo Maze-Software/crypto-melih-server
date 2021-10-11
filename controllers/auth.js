@@ -1,7 +1,7 @@
 const User = require('../schemas/user');
 var validator = require('validator');
 const errorHandler = require('./errorhandler');
-const { checkMissingParams, checkLogin, activeUserSubscription } = require('./general');
+const { checkMissingParams, checkLogin, activeUserSubscription, isUserSubscribed } = require('./general');
 const bcrypt = require('bcryptjs');
 const config = require('../config.json');
 var jwt = require('jsonwebtoken');
@@ -22,10 +22,11 @@ function generateReferralCode(length) {
 
 function firstNameValidator(firstName, res) {
     const length = validator.isByteLength(firstName, { min: 2, max: 20 }) // length should be between 4 and 10
-    const regex = validator.matches(firstName, /^[a-zA-Z0-9ğüşöçİıĞÜŞÖÇ]+$/g); // should contains at least 1 char (letter)
+    // const regex = validator.matches(firstName, /^[a-zA-Z0-9ğüşöçİıĞÜŞÖÇ]+$/g); // should contains at least 1 char (letter)
     if (!length) new errorHandler(res, 500, 4);
-    if (!regex) new errorHandler(res, 500, 5);
-    return length && regex;
+    // if (!regex) new errorHandler(res, 500, 5);
+    // return length && regex;
+    return length
 }
 
 function lastNameValidator(lastName, res) {
@@ -116,7 +117,8 @@ const registerUser = async (req, res) => {
                 promotionEmail,
                 profilePicture: profilePicture ? profilePicture : "",
                 phone,
-                referralCode: referralCodeGenerated
+                referralCode: referralCodeGenerated,
+                latestRefCodeOwner: ""
             }).save(); // Insert to database
 
 
@@ -125,9 +127,12 @@ const registerUser = async (req, res) => {
 
             if (referralCode) {
                 const whooseCode = await User.findOne({ referralCode });
-                if (whooseCode) {
+                if (whooseCode && await isUserSubscribed(whooseCode)) {
+
                     await activeUserSubscription(1, whooseCode._id)
                     await activeUserSubscription(1, newUser._id)
+                    await User.findByIdAndUpdate(newUser._id, { latestRefCodeOwner: whooseCode._id })
+
                 }
             }
 
