@@ -96,11 +96,15 @@ const activeUserSubscription = async (month = 1, userId) => {
 }
 const sendPushNotification = async (userId, messageObject = { title: "", message: "", message: "" }) => {
     const findToken = await PushTokens.findOne({ userId: userId });
-    const { data } = await axios.post("https://exp.host/--/api/v2/push/send", {
-        ...messageObject,
-        to: findToken.pushToken
-    });
 
+    if (findToken) {
+        if (findToken.pushToken) {
+            const { data } = await axios.post("https://exp.host/--/api/v2/push/send", {
+                ...messageObject,
+                to: findToken.pushToken
+            });
+        }
+    }
 }
 
 module.exports = { checkMissingParams, checkLogin, isAdmin, isUserSubscribed, activeUserSubscription, sendPushNotification };

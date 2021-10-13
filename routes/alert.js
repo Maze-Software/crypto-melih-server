@@ -20,7 +20,6 @@ route.get('/', async (req, res) => {
 route.post('/', async (req, res) => {
     const message = JSON.parse(req.body.text.replace(/'/g, '"').replace('message', '"message"').replace('coin', '"coin"').replace('value', '"value"'))
     //TODO : Push notification Sadece satın almış olanlara
-    console.log("geldi")
     let nowDate = new Date()
 
     const findVipUsers = await User.find({ subscription: true, subscriptionEndDate: { $gt: nowDate } })
