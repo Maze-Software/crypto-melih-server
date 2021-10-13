@@ -83,7 +83,7 @@ const addTwitterUser = async (req, res) => {
         }).save();
     }
     else {
-        addTwitterUser = await new TwitterUser({ username: username })
+        addTwitterUser = await new TwitterUser({ username: username }).save()
     }
 
 
