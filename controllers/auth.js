@@ -220,13 +220,23 @@ const pushTokenHandler = async (userId, pushToken) => {
     // }
 
 }
+
+const findUserByEmailOrUsername = async (email) => {
+    const userByEmail = await User.findOne({ email: { $regex: new RegExp(email, "i") } });
+    if (userByEmail) return userByEmail;
+    const userByUsername = await User.findOne({ username: { $regex: new RegExp(email, "i") } })
+    if (userByUsername) return userByUsername;
+    return false;
+}
 const login = async (req, res) => {
 
 
     if (await checkLogin(req) == false) {
         const { email, password } = req.body;
-        const userByEmail = await User.findOne({ email: email });
+        let userByEmail = await findUserByEmailOrUsername(email);
+
         if (userByEmail) {
+            console.log(userByEmail)
             const comparePassword = await bcrypt.compare(password, userByEmail.hash)
             const token = createJWT(email, userByEmail._id);
             if (comparePassword) {
