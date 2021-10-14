@@ -168,6 +168,9 @@ const logOut = async (req, res) => {
         if (token) {
             var result = jwt.verify(token, config.privateKey);
             const user = await User.findOne({ email: result.email });
+            if (user) {
+                await PushTokens.deleteOne({ userId: user._id })
+            }
             global.socketUsers = global.socketUsers.filter(e => e.userId != user._id)
         }
         res.clearCookie('token');

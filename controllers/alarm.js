@@ -9,15 +9,16 @@ const setAlarm = async (req, res) => {
     const type = lowerBound ? 0 : 1;
     if (!getUser) { return new errorHandler(res, 401, -1) }
     if (!currency || (!lowerBound && !upperBound)) { return new errorHandler(res, 500, 1) }
-    const checkExist = await Alarm.exists({
-        active: true,
-        userId: getUser._id,
-        currency,
-        type
-    })
-    if (checkExist) {
-        return res.status(500).send({ message: "Alarm zaten kurulmuş" })
-    }
+    // const checkExist = await Alarm.exists({
+    //     active: true,
+    //     userId: getUser._id,
+    //     currency,
+    //     type
+    // })
+    // if (checkExist) {
+    //     return res.status(500).send({ message: "Alarm zaten kurulmuş" })
+    // }
+
     const createAlarm = await new Alarm({
         active: true,
         userId: getUser._id,
@@ -36,6 +37,7 @@ const getUserAlarm = async (req, res) => {
     res.status(200).send({ data: getAlarm })
 
 }
+
 const deleteAlarm = async (req, res) => {
     const getUser = await checkLogin(req);
     const { alarmId } = req.body;

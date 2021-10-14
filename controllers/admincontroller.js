@@ -77,7 +77,6 @@ const updateAdmin = async (req, res) => {
 
     // if (!checkMissingParams(params, req, res)) return;
     const { adminId, email, firstName, lastName } = req.body;
-    console.log({ adminId, email, firstName, lastName });
     const addAdmin = Admins.findById(adminId);
 
     await addAdmin.updateOne({
@@ -109,7 +108,8 @@ const removeUser = async (req, res) => {
     if (isAdmin(req)) {
       const { id } = req.body;
       const user = await User.findByIdAndDelete(id);
-
+      if (user)
+        await PushTokens.deleteOne({ userId: user._id })
       res.status(200).send({ message: "deleted" });
     }
   } catch (e) {

@@ -62,5 +62,33 @@ route.post('/delete', async (req, res) => {
     }
 });
 
+route.post('/deleteall', async (req, res) => {
+
+    // try {
+    const getUser = await checkLogin(req);
+    if (!getUser) { return res.status(500).send("false") }
+
+    const findOwnDeletedAlert = await DeletedVipAlerts.find({ userId: getUser._id, })
+    const findAlert = await VipAlarms.find({ _id: { $nin: findOwnDeletedAlert.map(e => e.alertId) } })
+
+    for await (const alertObj of findAlert) {
+
+
+        const newDeletedAlarms = await new DeletedVipAlerts({
+            userId: getUser._id,
+            alertId: alertObj._id
+        }).save();
+
+
+
+
+    }
+    res.send("ok")
+    // }
+    // catch (e) {
+    //     res.status(500).send("false")
+    // }
+});
+
 module.exports = route;
 
