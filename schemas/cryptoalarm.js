@@ -7,6 +7,7 @@ const adminSchema = new Schema({
     userId: { type: String, required: true, },
     currency: { type: String, required: true },
     upperBound: { type: Number, required: false },
+    moneyCurrency: { type: String, required: false, default: "try" },
     lowerBound: { type: Number, required: false },
     active: { type: Boolean, required: true, default: true },
     type: { type: Number, required: true }, // 0 lower 1 upper

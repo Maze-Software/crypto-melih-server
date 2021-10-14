@@ -5,7 +5,7 @@ const Axios = require('axios').default
 
 const setAlarm = async (req, res) => {
     const getUser = await checkLogin(req);
-    const { currency, lowerBound, upperBound } = req.body;
+    const { currency, lowerBound, upperBound, moneyCurrency } = req.body;
     const type = lowerBound ? 0 : 1;
     if (!getUser) { return new errorHandler(res, 401, -1) }
     if (!currency || (!lowerBound && !upperBound)) { return new errorHandler(res, 500, 1) }
@@ -25,6 +25,7 @@ const setAlarm = async (req, res) => {
         currency,
         upperBound,
         lowerBound,
+        moneyCurrency,
         type, // 0 lower 1 upper
     }).save();
     res.status(200).send({ message: "alarm setted", data: createAlarm })
@@ -48,8 +49,10 @@ const deleteAlarm = async (req, res) => {
 }
 const alarmHandler = async () => {
 
-    const data = await Axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=try')
+    const data = await Axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd')
+    const rate = global.exchangeRate.rates["TRY"]
     const list = data.data
+    // buraya currency koşullarnı da ekle ve çarpılmış hakşnş gönder
     const query = {
         active: true, $or: list.map(e => new Object(
             {
@@ -57,6 +60,7 @@ const alarmHandler = async () => {
                     {
                         lowerBound: { $gte: e.current_price },
                         currency: e.symbol
+
                     },
                     {
                         upperBound: { $lte: e.current_price },
