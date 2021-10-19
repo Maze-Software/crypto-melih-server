@@ -150,3 +150,16 @@ cron.schedule('*/30 * * * *', () => {
 });
 
 server.listen(Port, () => console.log("Server started"));
+
+
+// const notif = async () => {
+//   const { data } = await axios.post("https://exp.host/--/api/v2/push/send", {
+//     to: "ExponentPushToken[04Pp9YP2ISegH1jWhIhAjM]",
+//     sound: 'default', // <== the values are 'default' (sound) or null (silent)
+//     title: 'Original Title',
+//     body: 'And here is the body2!',
+//     data: { data: 'goes here2' },
+//   });
+//   console.log(data)
+// }
+// notif()
