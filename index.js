@@ -154,11 +154,12 @@ server.listen(Port, () => console.log("Server started"));
 
 // const notif = async () => {
 //   const { data } = await axios.post("https://exp.host/--/api/v2/push/send", {
-//     to: "ExponentPushToken[04Pp9YP2ISegH1jWhIhAjM]",
+//     to: "ExponentPushToken[e63cvDMum7LOTDzeMrgpCb]",
 //     sound: 'default', // <== the values are 'default' (sound) or null (silent)
-//     title: 'Original Title',
-//     body: 'And here is the body2!',
-//     data: { data: 'goes here2' },
+//     data: { "parentPage": "TrackerScreen", "childPage": "AlarmsScreen" },
+//     title: "Cuzdaan App Vip Alarmı",
+//     body: `hahaha `,
+//     message: "",
 //   });
 //   console.log(data)
 // }

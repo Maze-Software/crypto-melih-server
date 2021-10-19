@@ -76,6 +76,7 @@ const alarmHandler = async () => {
     if (getAlarm.length > 0) {
         for await (const alarm of getAlarm) {
             await sendPushNotification(alarm.userId, {
+                data: { "parentPage": "TrackerScreen", "childPage": "AlarmsScreen" },
                 title: `${alarm.currency.toUpperCase()} ${alarm.lowerBound ? alarm.lowerBound : alarm.upperBound} Alarmı`,
                 body: `Tetiklenen alarm ${alarm.currency.toUpperCase()} ${alarm.lowerBound ? alarm.lowerBound : alarm.upperBound} seviyesinin ${alarm.lowerBound ? "altına indi" : "üstüne çıktı"}`,
                 message: `Tetiklenen alarm ${alarm.currency.toUpperCase()} ${alarm.lowerBound ? alarm.lowerBound : alarm.upperBound} seviyesinin ${alarm.lowerBound ? "altına indi" : "üstüne çıktı"}`

@@ -94,14 +94,16 @@ const activeUserSubscription = async (month = 1, userId) => {
         return false;
     }
 }
-const sendPushNotification = async (userId, messageObject = { title: "", message: "", message: "" }) => {
+const sendPushNotification = async (userId, messageObject = { title: "", message: "" }) => {
     const findToken = await PushTokens.findOne({ userId: userId });
 
     if (findToken) {
         if (findToken.pushToken) {
             const { data } = await axios.post("https://exp.host/--/api/v2/push/send", {
                 ...messageObject,
-                to: findToken.pushToken
+                to: findToken.pushToken,
+                sound: true,
+                vibrate: true
             });
         }
     }

@@ -26,7 +26,8 @@ route.post('/', async (req, res) => {
     for await (const user of findVipUsers) {
         // console.log(user)
         await sendPushNotification(user._id, {
-            title: "Cuzdan App Vip Alarmı",
+            data: { "parentPage": "ApplyTradeBotScreen", "childPage": "TradeBotAlarmsScreen" },
+            title: "Cuzdaan App Vip Alarmı",
             body: `${message.coin.toUpperCase()} : ${message.value} - ${message.message} `,
             message: "",
         })
