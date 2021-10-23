@@ -141,6 +141,10 @@ const registerUser = async (req, res) => {
                 await new TwitterFollows({ username: twitterUser.username, userId: newUser._id }).save();
             }
 
+            const pushToken = req.body.pushToken
+            if (pushToken)
+                await pushTokenHandler(newUser._id, pushToken)
+
             res.status(200).send({ message: "User registered successfully", token: token, user: newUser }) // send response;
 
 
@@ -246,6 +250,11 @@ const login = async (req, res) => {
                 const { pushToken = "none" } = req.body
                 await pushTokenHandler(userByEmail._id, pushToken)
                 res.cookie('token', token); // set token to the cookie
+
+                const pushToken = req.body.pushToken
+                if (pushToken)
+                    await pushTokenHandler(newUser._id, pushToken)
+
                 res.status(200).send({ token: token, user: userByEmail })
             }
             else {
