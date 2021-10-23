@@ -30,6 +30,8 @@ route.post('/', async (req, res) => {
             title: "Cuzdaan App Vip Alarmı",
             body: `${message.coin.toUpperCase()} : ${message.value} - ${message.message} `,
             message: "",
+            sound: true,
+            vibrate: true
         })
     }
     const addAlarm = await new VipAlarms({ ...message }).save();
