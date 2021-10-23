@@ -140,9 +140,9 @@ cron.schedule('*/10 * * * * *', () => {
   alarmHandler();
 });
 
-cron.schedule('*/10 * * * * *', () => {
-  alarmHandler();
-});
+// cron.schedule('*/10 * * * * *', () => {
+//   alarmHandler();
+// });
 
 axios.get("https://api.exchangerate.host/latest?base=USD").then(data => global.exchangeRate = data.data)
 cron.schedule('*/30 * * * *', () => {
