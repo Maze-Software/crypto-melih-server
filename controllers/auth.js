@@ -87,7 +87,8 @@ const registerUser = async (req, res) => {
         if (!checkMissingParams(params, req, res)) return;
 
         let { username, firstName, lastName, email, password, phone, promotionEmail = false, referralCode = false, profilePicture = "" } = req.body;
-
+        email = email.trim();
+        username = username.trim();
 
 
         const check = await User.exists({ $or: [{ username }, { email }] })
@@ -239,7 +240,8 @@ const login = async (req, res) => {
 
 
     if (await checkLogin(req) == false) {
-        const { email, password } = req.body;
+        let { email, password } = req.body;
+        email = email.trim();
         let userByEmail = await findUserByEmailOrUsername(email);
 
         if (userByEmail) {
