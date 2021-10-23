@@ -247,13 +247,13 @@ const login = async (req, res) => {
             const comparePassword = await bcrypt.compare(password, userByEmail.hash)
             const token = createJWT(email, userByEmail._id);
             if (comparePassword) {
-                const { pushToken = "none" } = req.body
-                await pushTokenHandler(userByEmail._id, pushToken)
-                res.cookie('token', token); // set token to the cookie
-
                 const pushToken = req.body.pushToken
                 if (pushToken)
                     await pushTokenHandler(newUser._id, pushToken)
+
+                res.cookie('token', token); // set token to the cookie
+
+
 
                 res.status(200).send({ token: token, user: userByEmail })
             }
