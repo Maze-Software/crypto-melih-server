@@ -102,8 +102,6 @@ const sendPushNotification = async (userId, messageObject = { title: "", message
             const { data } = await axios.post("https://exp.host/--/api/v2/push/send", {
                 ...messageObject,
                 to: findToken.pushToken,
-                sound: true,
-                vibrate: true
             });
         }
     }
