@@ -250,7 +250,7 @@ const login = async (req, res) => {
             if (comparePassword) {
                 const pushToken = req.body.pushToken
                 if (pushToken)
-                    await pushTokenHandler(newUser._id, pushToken)
+                    await pushTokenHandler(userByEmail._id, pushToken)
 
                 res.cookie('token', token); // set token to the cookie
 
