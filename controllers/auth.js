@@ -246,7 +246,7 @@ const login = async (req, res) => {
 
         if (userByEmail) {
             const comparePassword = await bcrypt.compare(password, userByEmail.hash)
-            const token = createJWT(email, userByEmail._id);
+            const token = createJWT(userByEmail.email, userByEmail._id);
             if (comparePassword) {
                 const pushToken = req.body.pushToken
                 if (pushToken)
