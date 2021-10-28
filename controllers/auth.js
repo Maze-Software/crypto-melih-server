@@ -89,7 +89,8 @@ const registerUser = async (req, res) => {
         let { username, firstName, lastName, email, password, phone, promotionEmail = false, referralCode = false, profilePicture = "" } = req.body;
         email = email.trim();
         username = username.trim();
-
+        firstName = firstName.trim();
+        lastName = lastName.trim();
 
         const check = await User.exists({ $or: [{ username }, { email }] })
         if (check) { return res.status(500).send({ message: "username or email already exist" }) }
