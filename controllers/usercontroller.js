@@ -83,7 +83,11 @@ const registerUser = async (req, res) => {
         if (!checkMissingParams(params, req, res)) return;
 
         let { firstName, lastName, email, password, city, country, university, phone, lang } = req.body;
+        firstName = firstName.trim();
+        lastName = lastName.trim();
+        email = email.trim();
         firstName = CapitalizeString(firstName);
+
         lastName = CapitalizeString(lastName);
         email = email.toLowerCase();
 
