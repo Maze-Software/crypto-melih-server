@@ -20,7 +20,7 @@ route.post('/purchase', async (req, res) => {
     const user = await checkLogin(req)
     if (user && req.body.key == "uygulamaicisatinalma") {
         const month = 1
-        await activeUserSubscription(month, req.body.userId);
+        await activeUserSubscription(month, user._id);
         res.send(true)
     }
     else {
