@@ -53,6 +53,7 @@ app.use("/api/investing", require("./routes/investing"));
 app.use("/api/alert", require("./routes/alert"));
 app.use("/api/user", require("./routes/user"));
 app.use("/api/buy", require("./routes/buy"));
+app.use("/api/appstore", require("./routes/appstore"));
 
 
 // -- ROUTES -- //
