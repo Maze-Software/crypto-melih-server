@@ -14,5 +14,14 @@
     "apiKey": "X9bRmRQGq0H1aeca49Dq2JCKv",
     "secretKey": "mXG36PYnAPPInB1vPwYYejtPeikBpSNVirOi2n4pK4U1SPZ7v7",
     "token": "AAAAAAAAAAAAAAAAAAAAAM9OSgEAAAAA02%2BtqIx4jfiX49uvMULC%2BXNtcKY%3D9ymm9rtkcHBExOiMXaXv5UvHqYJl0Ise7KCDtncc49AIM8IUQW"
+  },
+  "products": {
+    "android": [
+      "aylikabonelik"
+    ],
+    "ios": [
+      "com.aylikabonelik2",
+      "com.aylikabonelik"
+    ]
   }
 }
